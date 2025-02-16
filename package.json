@@ -1,0 +1,24 @@
+{
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "live-server": "^1.2.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "htmx.org": "^2.0.4"
+  },
+  "name": "website1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "serve": "npm run build && cd backend && xdg-open \"http://localhost:8080\" && cargo r",
+    "deploy": "cloudflared tunnel --url http://localhost:8080",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run serve\" \"npm run deploy\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
