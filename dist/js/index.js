@@ -1,5 +1,4 @@
 "use strict";
-// src/main.ts
 document.addEventListener("DOMContentLoaded", () => {
     const button = document.getElementById("myButton");
     if (button) {
