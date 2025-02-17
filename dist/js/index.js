@@ -1,12 +1,28 @@
 "use strict";
-document.addEventListener("DOMContentLoaded", () => {
-    const button = document.getElementById("myButton");
-    if (button) {
-        button.addEventListener("click", () => {
-            alert("Button clicked!");
+const skills = [
+    "HTML5 & CSS3",
+    "JavaScript & TypeScript",
+    "React & Next.js",
+    "Node.js & Express",
+    "UI/UX Design",
+];
+function populateSkills() {
+    const skillsList = document.getElementById("skills-list");
+    if (skillsList) {
+        skills.forEach((skill) => {
+            const li = document.createElement("li");
+            li.textContent = skill;
+            skillsList.appendChild(li);
         });
     }
-    else {
-        console.error("Button not found.");
+}
+function setCurrentYear() {
+    const yearSpan = document.getElementById("current-year");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear().toString();
     }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    populateSkills();
+    setCurrentYear();
 });
