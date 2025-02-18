@@ -1,67 +1,71 @@
-.container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #121212;
-    color: #e0e0e0;
-  }
-  
-  .header {
-    text-align: center;
-    padding: 2rem 0;
-    background-color: #1e1e1e;
-  }
-  
-  .header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .header p {
-    font-size: 1.2rem;
-    color: #b0b0b0;
-  }
-  
-  .main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-  }
-  
-  .profilePic {
-    border-radius: 50%;
-    margin-bottom: 2rem;
-  }
-  
-  .about,
-  .skills {
-    max-width: 600px;
-    margin-bottom: 2rem;
-  }
-  
-  .about h2,
-  .skills h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #bb86fc;
-  }
-  
-  .skills ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .skills li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .footer {
-    text-align: center;
-    padding: 1rem 0;
-    background-color: #1e1e1e;
-    font-size: 0.9rem;
-  }
-  
-  
+.site-header {
+  padding: 3% 3% 0 3%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-logo {
+  padding: 0 0 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.site-logo-image {
+  width: 15%;
+  height: auto;
+  display: block;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-menu {
+  list-style: none;  /* No Bullet Points */
+  margin: 0;
+  padding: 0;
+  display: flex;  /* List out Horizontally */
+}
+
+.nav-menu li {
+  position: relative;
+  padding: 15px 15px;
+}
+
+.nav-menu a {
+  text-decoration: none;  /* No Underline */
+  color: white;
+  font-size: 16px;
+  font-family: 'Comfortaa', sans-serif;
+  white-space: nowrap;
+  padding: 0 0 0 10px;
+  display: block;
+}
+
+.dropdown-content {
+  display: none;  /* Remove Bullets */
+  position: absolute;  /* Below Parent */
+  top: 100%;
+  left: 0;
+  padding: 0 0 0 0;
+  z-index: 10;
+  right: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-content li {
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-content a {
+  color: white;
+  text-decoration: none;  /* No Underline */
+  display: block;
+  padding: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
