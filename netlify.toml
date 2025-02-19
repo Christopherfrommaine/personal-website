@@ -2,15 +2,9 @@
   command = "npm run build"
   publish = "dist"
 
-[[redirects]]
-  from = "/"
-  to = "/dist"
-  status = 200
-  force = true
-
-[[redirects]]
+[[redirect]]
   from = "/*"
-  to = "/dist/404.html"
-  status = 404
-  force = true
+  to = "./:splat"
+  status = 200
+
 

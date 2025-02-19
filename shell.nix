@@ -10,8 +10,6 @@ in pkgs.mkShell {
 
   shellHook = ''
     npm install -D typescript
-    npm install htmx.org
     npm install -D live-server
-    npm install -D concurrently
   '';
 }
