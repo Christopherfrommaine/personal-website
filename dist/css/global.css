@@ -1,7 +1,29 @@
+:root {
+  --color-page-gradient-top: #151726;
+  --color-page-gradient-bottom: #121212;
+  --color-shadow-opacity: rgba(0, 0, 0, 0.5);
+}
+
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom, #151726, #121212);
+  background: linear-gradient(to bottom, var(--color-page-gradient-top), var(--color-page-gradient-bottom));
   background-attachment: fixed;
 }
 
+html, body {
+  /* Fill to bottom, so footer is pushed down */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  /* Fill to bottom, so footer is pushed down */
+  flex: 1;
+
+  /* Default Formatting */
+  margin: 0 25% 0 25%;
+  color: white;
+  font-family: 'Comfortaa', sans-serif;
+}

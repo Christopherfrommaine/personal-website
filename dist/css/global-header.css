@@ -1,0 +1,77 @@
+.site-header {
+  padding: 20px 10% 50px 10%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-logo {
+  padding: 10px 0 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.site-logo-image {
+  width: 128px;
+  height: auto;
+  display: block;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.nav-menu {
+  list-style: none;  /* No Bullet Points */
+  margin: 0;
+  padding: 0;
+  display: flex;  /* List out Horizontally */
+}
+
+.nav-menu li {
+  position: relative;
+  padding: 15px 15px;
+}
+
+.nav-menu a {
+  text-decoration: none;  /* No Underline */
+  color: white;
+  font-size: 16px;
+  font-family: 'Comfortaa', sans-serif;
+  white-space: nowrap;
+  padding: 0 0 0 10px;
+  display: block;
+}
+
+.nav-menu a:hover {
+  color: #b0b0b0;
+}
+
+.dropdown-content {
+  display: none;  /* Remove Bullets */
+  position: absolute;  /* Below Parent */
+  top: 100%;
+  left: 10px;  /* Same as padding for .nav-menu */
+  padding: 0 0 0 0;
+  z-index: 10;
+  right: auto;
+  background: var(--color-page-gradient-top);
+  box-shadow: 0 4px 6px var(--color-shadow-opacity);  /* Add Slight Shadow */
+}
+
+.dropdown-content li {
+  list-style: none;
+  padding: 5px;
+}
+
+.dropdown-content a {
+  color: white;
+  text-decoration: none;  /* No Underline */
+  display: block;
+  padding: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}  
