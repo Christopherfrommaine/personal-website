@@ -1,17 +1,10 @@
 .headshot {
-  width: 30%;
-  aspect-ratio: 12 / 16;
+  width: 200px;
+  height: 250px;
   object-fit: cover;  /* Crop instead of squish */
   object-position: 48%;
-}
-
-/* Display image and paragraph on same line */
-.intro {
-  display: flex;
-}
-
-.para1 {
-  padding-left: 25px;
+  float: left;  /* Display image and paragraph on same line, wrapping text around */
+  padding: 0 25px 25px 0;
 }
 
 .title1 {

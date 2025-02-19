@@ -4,26 +4,31 @@
   --color-shadow-opacity: rgba(0, 0, 0, 0.5);
 }
 
-body {
+html, body {
+  /* Fill to bottom, so footer is pushed down */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
+}
+
+body {
   background: linear-gradient(to bottom, var(--color-page-gradient-top), var(--color-page-gradient-bottom));
   background-attachment: fixed;
 }
 
-html, body {
-  /* Fill to bottom, so footer is pushed down */
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 .main-content {
-  /* Fill to bottom, so footer is pushed down */
-  flex: 1;
+  flex: 1; /* Fill to bottom, so footer is pushed down */
 
   /* Default Formatting */
   margin: 0 25% 0 25%;
   color: white;
+  font-display: swap;
   font-family: 'Comfortaa', sans-serif;
+}
+
+.global-footer {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
 }
