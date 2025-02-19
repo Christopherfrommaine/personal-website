@@ -16,6 +16,14 @@ html, body {
 body {
   background: linear-gradient(to bottom, var(--color-page-gradient-top), var(--color-page-gradient-bottom));
   background-attachment: fixed;
+
+  /* For Fade-In Transition */
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+body.loaded {
+  opacity: 1;  /* For Fade-In Transition */
 }
 
 .main-content {

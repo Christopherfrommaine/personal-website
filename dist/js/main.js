@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const headerElement = document.getElementById('global-header');
     if (headerElement) {
-        fetch('global/global-header.html')
+        fetch('/global/global-header.html')
             .then(response => response.text())
             .then(data => {
             headerElement.innerHTML = data;
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     const headerElement = document.getElementById('global-footer');
     if (headerElement) {
-        fetch('global/global-footer.html')
+        fetch('/global/global-footer.html')
             .then(response => response.text())
             .then(data => {
             headerElement.innerHTML = data;
@@ -29,15 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.warn('Global footer element not found on the page');
     }
 });
-// Replace default-prelude elements with global/prelude.html
-document.addEventListener('DOMContentLoaded', function () {
-    const headerElement = document.getElementById('default-prelude');
-    if (headerElement) {
-        fetch('global/prelude.html')
-            .then(response => response.text())
-            .then(data => {
-            headerElement.innerHTML = data;
-        })
-            .catch(error => console.error('Error loading global footer:', error));
-    }
+document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.add("loaded");
 });
