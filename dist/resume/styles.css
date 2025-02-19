@@ -1,20 +1,12 @@
 .main-content a {
   color: white;
 }
+.main-content a:hover {
+  color: color-mix(in srgb, white 100%, var(--color-shadow-opacity) 100%);
+}
 
 .para1 {
   display: flex;
   align-items: baseline;
-}
-
-.para1 p {
-  margin: 0;
-}
-
-.para1 h1{
-  margin: 0;
-}
-
-.link {
-  display: inline;
+  gap: 15px;
 }

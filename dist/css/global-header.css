@@ -1,5 +1,5 @@
 .site-header {
-  padding: 20px 10% 50px 10%;
+  padding: 20px 20% 50px 20%;
   display: flex;
   justify-content: space-between;
 }
@@ -31,7 +31,7 @@
 
 .nav-menu li {
   position: relative;
-  padding: 15px 15px;
+  padding: 12px 12px;
 }
 
 .nav-menu a {

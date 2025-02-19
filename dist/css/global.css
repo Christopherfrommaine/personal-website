@@ -30,7 +30,7 @@ body.loaded {
   flex: 1; /* Fill to bottom, so footer is pushed down */
 
   /* Default Formatting */
-  margin: 0 25% 0 25%;
+  margin: 0 20% 0 20%;
   color: white;
   font-display: swap;
   font-family: 'Comfortaa', sans-serif;
