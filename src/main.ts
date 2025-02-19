@@ -29,3 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {
     console.warn('Global footer element not found on the page');
   }
 });
+
+// Replace default-prelude elements with global/prelude.html
+document.addEventListener('DOMContentLoaded', function() {
+  const headerElement = document.getElementById('default-prelude');
+  
+  if (headerElement) {
+    fetch('global/prelude.html')
+      .then(response => response.text())
+      .then(data => {
+        headerElement.innerHTML = data;
+      })
+      .catch(error => console.error('Error loading global footer:', error));
+  }
+});
