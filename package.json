@@ -10,8 +10,8 @@
   "scripts": {
     "build": "npx tsc",
     "open": "xdg-open \"http://localhost:8080\"",
-    "server": "npx live-server dist/ --entry-file=404.html",
-    "serve": "npm run build && npx live-server dist/ --entry-file=404.html",
+    "server": "npx live-server dist/",
+    "serve": "npm run build && npx live-server dist/",
     "cloudflate-deploy": "cloudflared tunnel --url http://localhost:8080"
   },
   "keywords": [],

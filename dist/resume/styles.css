@@ -1,0 +1,8 @@
+.main-content a {
+  color: white;
+}
+
+.para1 {
+  display: flex;
+  align-items: baseline;
+}
