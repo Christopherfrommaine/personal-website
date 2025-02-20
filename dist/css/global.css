@@ -1,9 +1,11 @@
+/* Colors and Global Variables */
 :root {
   --color-page-gradient-top: #151726;
   --color-page-gradient-bottom: #121212;
   --color-shadow-opacity: rgba(0, 0, 0, 0.5);
 }
 
+/* Basic Page Layout */
 html, body {
   /* Fill to bottom, so footer is pushed down */
   height: 100vh;
@@ -11,32 +13,46 @@ html, body {
   flex-direction: column;
   margin: 0;
   padding: 0;
-}
 
-body {
+  /* Slight Gradient Background */
   background: linear-gradient(to bottom, var(--color-page-gradient-top), var(--color-page-gradient-bottom));
   background-attachment: fixed;
-
-  /* For Fade-In Transition */
-  opacity: 0;
-  transition: opacity 0.3s ease-in;
 }
 
-body.loaded {
-  opacity: 1;  /* For Fade-In Transition */
-}
-
+/* Default Formatting */
 .main-content {
   flex: 1; /* Fill to bottom, so footer is pushed down */
-
-  /* Default Formatting */
-  margin: 0 20% 0 20%;
+  padding: 30px 20% 0 20%;
   color: white;
   font-display: swap;
   font-family: 'Comfortaa', sans-serif;
 }
+#global-footer {
+  margin: 0;
+  padding: 20px 0 0 0;
+}
 
-.global-footer {
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
+h1 {
+  margin-top: 0;
+}
+h2 {
+  font-size: 24px;
+  margin: 0 10px 0 0;
+  font-weight: lighter;
+}
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  margin: 8px 0 8px 0;
+}
+
+
+/* Fade-In Transition */
+body {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+body.loaded {
+  opacity: 1;
 }
