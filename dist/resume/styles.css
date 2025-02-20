@@ -10,3 +10,15 @@
   align-items: baseline;
   gap: 15px;
 }
+
+li {
+  /* Same as <p> */
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  margin: 8px 0 8px 0;
+}
+
+a {
+  text-decoration: underline;
+}
