@@ -16,7 +16,7 @@ canvas.height = window.innerHeight;
 let G = 100;
 let DT = 0.01;
 let DAMPING = 0.01;
-let STEPS = 20;  // Steps per Frame
+let STEPS = 20;  // Steps per Frame Multiplier
 
 let M = 3;  // Number of Attractors
 let N = 10000;  // Number of Particles
@@ -131,8 +131,15 @@ function draw() {
     ctx.fill();
 }
 
+let lastTime = performance.now();
+
 function animate() {
-    for (let i = 0; i < STEPS; i ++ ) {updateParticles();}
+    let now = performance.now();
+    let dt = (now - lastTime) * DT; 
+    lastTime = now;
+    let dynamicSteps = Math.max(1, Math.floor(10 * dt / (DT * STEPS)));  // Adaptive step count
+    for (let i = 0; i < dynamicSteps; i ++ ) {updateParticles();}
+
     draw();
     requestAnimationFrame(animate);
 }
