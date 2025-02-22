@@ -16,19 +16,12 @@ canvas.height = window.innerHeight;
 let G = 100;
 let DT = 0.01;
 let DAMPING = 0.01;
-let STEPS = 10;  // Steps per Frame
+let STEPS = 20;  // Steps per Frame
 
-// Number of Attractors:
-let M = 3;
+let M = 3;  // Number of Attractors
+let N = 10000;  // Number of Particles
 
 // // Program
-interface Particle {
-    x: number;
-    y: number;
-    vx: number;
-    vy: number;
-}
-
 interface Attractor {
     x: number;
     y: number;
@@ -36,12 +29,26 @@ interface Attractor {
 }
 
 // Generate Particle List
-let particles: Particle[] = [];
-for (let x = 0; x < canvas.width; x += 5) {
-    for (let y = 0; y < canvas.height; y += 5) {
-        particles.push({x, y, vx: 0, vy: 0})
+let dx = canvas.width / Math.sqrt(N * canvas.width / canvas.height);
+let dy = canvas.height / Math.sqrt(N * canvas.height / canvas.width);
+
+let particles = {
+    x: new Float32Array(N),
+    y: new Float32Array(N),
+    vx: new Float32Array(N),
+    vy: new Float32Array(N),
+};
+let index = 0;
+for (let x = 0; x < canvas.width; x += dx) {
+    for (let y = 0; y < canvas.height; y += dy) {
+        if (index < N) {
+            particles.x[index] = x;
+            particles.y[index] = y;
+            index++;
+        }
     }
 }
+
 
 // Generate Attractor List
 function randomAttractor(): Attractor {
@@ -75,34 +82,28 @@ window.addEventListener("resize", () => {
 
 // Physics
 function updateParticles() {
-    for (let i = 0; i < particles.length; i++) {
-        let p = particles[i]
-
+    for (let i = 0; i < N; i++) {
         let xForce = 0;
         let yForce = 0;
 
         for (let a of attractors) {
-
-            let dsq = (a.x - p.x) ** 2 + (a.y - p.y) ** 2;
+            let dsq = (a.x - particles.x[i]) ** 2 + (a.y - particles.y[i]) ** 2;
             let forceMag = G * a.m / (dsq * Math.sqrt(dsq));  // Also includes vector normalization
-            xForce += forceMag * (a.x - p.x);
-            yForce += forceMag * (a.y - p.y);
-            
+            xForce += forceMag * (a.x - particles.x[i]);
+            yForce += forceMag * (a.y - particles.y[i]);
         }
 
 
-        let vxo = p.vx;
-        let vyo = p.vy;
+        let vxo = particles.vx[i];
+        let vyo = particles.vy[i];
 
-        p.vx += DT * xForce;
-        p.vy += DT * yForce;
-        p.vx *= (1 - DT * DAMPING);
-        p.vy *= (1 - DT * DAMPING);
-        p.x += 0.5 * DT * (p.vx + vxo);  // Trapezoidal differential equation optimization
-        p.y += 0.5 * DT * (p.vy + vyo);
+        particles.vx[i] += DT * xForce;
+        particles.vy[i] += DT * yForce;
+        particles.vx[i] *= (1 - DT * DAMPING);
+        particles.vy[i] *= (1 - DT * DAMPING);
+        particles.x[i] += 0.5 * DT * (particles.vx[i] + vxo);  // Trapezoidal differential equation optimization
+        particles.y[i] += 0.5 * DT * (particles.vy[i] + vyo);
     }
-
-    particles = particles.filter((p) => !outOfBounds(p));
 }
 
 function draw() {
@@ -113,9 +114,9 @@ function draw() {
     
     // Batched rendering for large improvement
     ctx.beginPath();
-    for (let p of particles) {
-        ctx.moveTo(p.x + 2, p.y);
-        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+    for (let i = 0; i < N; i++) {
+        ctx.moveTo(particles.x[i] + 2, particles.y[i]);
+        ctx.arc(particles.x[i], particles.y[i], 2, 0, Math.PI * 2);
     }
     ctx.fill();
 
