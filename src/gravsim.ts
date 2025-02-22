@@ -2,14 +2,9 @@
 const canvas = document.createElement("canvas");
 const ctx = canvas.getContext("2d")!;
 document.body.appendChild(canvas);
-canvas.style.position = "fixed";
-canvas.style.top = "0";
-canvas.style.left = "0";
-canvas.style.zIndex = "1";
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
 
 // // Main Program
 // Physics Constants
@@ -29,8 +24,8 @@ interface Attractor {
 }
 
 // Generate Particle List
-let dx = canvas.width / Math.sqrt(N * canvas.width / canvas.height);
-let dy = canvas.height / Math.sqrt(N * canvas.height / canvas.width);
+let dx = Math.ceil(canvas.width / Math.sqrt(N * canvas.width / canvas.height));
+let dy = Math.ceil(canvas.height / Math.sqrt(N * canvas.height / canvas.width));
 
 let particles = {
     x: new Float32Array(N),
@@ -51,21 +46,33 @@ for (let x = 0; x < canvas.width; x += dx) {
 
 
 // Generate Attractor List
+let attractorPadding = 0.2;
 function randomAttractor(): Attractor {
-    let x = 0.1 * canvas.width + Math.random() * 0.8 * canvas.width;
-    let y = 0.1 * canvas.height + Math.random() * 0.8 * canvas.height;
+
+    let x = attractorPadding * canvas.width + Math.random() * (1 - 2 * attractorPadding) * canvas.width;
+    let y = attractorPadding * canvas.height + Math.random() * (1 - 2 * attractorPadding) * canvas.height;
     let m = 100 + 200 * Math.random()
 
     return {x, y, m};
 }
 let attractors: Attractor[] = [];
-for (let i = 0; i < M; i++) {attractors.push(randomAttractor())}
+for (let i = 0; attractors.length < M; i++) {
+    let a = randomAttractor();
+    let minDist = Infinity;
+    for (let ao of attractors) {
+        minDist = Math.min(minDist, (ao.x - a.x) ** 2 + (ao.y - a.y) ** 2);
+    }
+
+    if (minDist > 30000 || i > 10) {
+        attractors.push(a);
+    }
+}
 
 // Resize Logic
 let resizeTimeout: number | null = null;
 
-function outOfBounds(p: any): boolean {
-    return (p.x < 0 || p.y < 0 || p.x > canvas.width || p.y > canvas.height)
+function outOfBounds(x: number, y: number): boolean {
+    return (x < 0 || y < 0 || x > canvas.width || y > canvas.height)
 }
 
 window.addEventListener("resize", () => {
@@ -75,7 +82,7 @@ window.addEventListener("resize", () => {
         canvas.height = window.innerHeight;
 
         for (let i = 0; i < M; i++) {
-            if (outOfBounds(attractors[i])) {attractors[i] = randomAttractor();}
+            if (outOfBounds(attractors[i].x, attractors[i].y)) {attractors[i] = randomAttractor();}
         }
     });
 });
@@ -115,8 +122,10 @@ function draw() {
     // Batched rendering for large improvement
     ctx.beginPath();
     for (let i = 0; i < N; i++) {
-        ctx.moveTo(particles.x[i] + 2, particles.y[i]);
-        ctx.arc(particles.x[i], particles.y[i], 2, 0, Math.PI * 2);
+        if (!outOfBounds(particles.x[i], particles.y[i])) {
+            ctx.moveTo(particles.x[i] + 2, particles.y[i]);
+            ctx.arc(particles.x[i], particles.y[i], 2, 0, Math.PI * 2);
+        }
     }
     ctx.fill();
 
