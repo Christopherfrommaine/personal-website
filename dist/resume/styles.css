@@ -11,7 +11,7 @@
   gap: 15px;
 }
 
-li {
+.main-content li {
   /* Same as <p> */
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;

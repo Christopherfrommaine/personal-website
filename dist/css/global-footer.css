@@ -4,6 +4,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
+  z-index: 2;
 }
 
 .site-footer a {
