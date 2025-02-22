@@ -117,7 +117,7 @@ function animate() {
     let now = performance.now();
     let dt = (now - lastTime) * DT;
     lastTime = now;
-    let dynamicSteps = Math.max(1, Math.floor(10 * dt / (DT * STEPS))); // Adaptive step count
+    let dynamicSteps = Math.min(Math.max(1, Math.floor(10 * dt / (DT * STEPS))), 50); // Adaptive step count
     for (let i = 0; i < dynamicSteps; i++) {
         updateParticles();
     }
