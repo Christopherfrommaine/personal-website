@@ -89,10 +89,11 @@ function updateParticles() {
         }
         let vxo = particles.vx[i];
         let vyo = particles.vy[i];
+        let dynamicDampingFactor = 1 + 2 * +outOfBounds(particles.x[i], particles.y[i]) * (1 - 100 / (1000 + Math.abs(particles.x[i] + canvas.width * 0.5) + Math.abs(particles.y[i] + canvas.height * 0.5)));
         particles.vx[i] += DT * xForce;
         particles.vy[i] += DT * yForce;
-        particles.vx[i] *= (1 - DT * DAMPING);
-        particles.vy[i] *= (1 - DT * DAMPING);
+        particles.vx[i] *= (1 - DT * DAMPING * dynamicDampingFactor);
+        particles.vy[i] *= (1 - DT * DAMPING * dynamicDampingFactor);
         particles.x[i] += 0.5 * DT * (particles.vx[i] + vxo); // Trapezoidal differential equation optimization
         particles.y[i] += 0.5 * DT * (particles.vy[i] + vyo);
     }

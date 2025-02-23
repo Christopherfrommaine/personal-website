@@ -3,6 +3,11 @@ html, body {
     background: var(--color-page-gradient-bottom);
 }
 
+:root {
+    --color-gravsim-particle: rgba(255, 255, 255, 0.8);
+    --color-gravsim-attractor: rgba(255, 32, 32, 0.5)
+}
+
 canvas {
     display: block;
     position: absolute;
