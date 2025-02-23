@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Link Stylesheets -->
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <title>Christopher Gilbert: Projects</title>
+
+  <!-- Import Favicons -->
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/assets/favicons/apple-touch-icon.png">
+
+  <!-- Import Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header id="global-header"></header>
+
+  <div class="main-content">
+    
+    <h1>Gravitational Simulation</h1>
+    <div class="para1">
+      <p id="text1"">This project is a gravitational simulation for a large number of light particles and a few heavy attractors. It was inspired originally by this video:</p> 
+
+      <p if="text2">I originally wrote it in python with numpy, and used it to make animations both like the background you see &lpar;which is actually a rewrite in typescript to run in the browser&rpar; as well as visualizations showing which attractor each point ended up closest to:</p>
+      
+      <div class="video-container">
+        <!-- Damn browser support -->
+        <iframe
+          src="https://www.youtube.com/embed/LavXSS5Xtbg"
+          allowfullscreen="allowfullscreen"
+          mozallowfullscreen="mozallowfullscreen" 
+          msallowfullscreen="msallowfullscreen" 
+          oallowfullscreen="oallowfullscreen" 
+          webkitallowfullscreen="webkitallowfullscreen">
+
+          Your browser does not support iframes. https://www.youtube.com/watch?v=LavXSS5Xtbg
+        </iframe>
+      </div>
+      
+      
+      
+
+
+    </div>
+
+    
+  </div>
+
+  <canvas id="particleCanvas"></canvas>
+  <script src="/js/gravsim.js" defer></script>
+  
+  <footer id="global-footer"></footer>
+
+  <script defer src="/js/main.js"></script>
+</body>

@@ -1,0 +1,53 @@
+body {z-index: 0;}
+
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(3px);
+}
+
+.para1 {
+    display: flex;
+    align-items: flex-start;
+}
+
+.para1 p {
+    flex: 1;
+}
+
+.video-container {
+    flex: 2;
+    max-width: 600px;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+/* Responsive layout: stack vertically when screen width is too small */
+@media (min-width: 768px) {
+    .para1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #text1 {
+        order: 3;
+    }
+
+    .video-container {
+        order: 2;
+    }
+
+    #text2 {
+        order: 1;
+    }
+}

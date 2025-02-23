@@ -6,6 +6,14 @@ document.body.appendChild(canvas);
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// Define Colors
+const particleColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--color-gravsim-particle")
+    .trim();
+const attractorColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--color-gravsim-attractor")
+    .trim();
+
 // // Main Program
 // Physics Constants
 let G = 100;
@@ -117,7 +125,7 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     // Draw Particles
-    ctx.fillStyle = "rgba(255, 255, 255, 0.2)";  // Transparent to act as background
+    ctx.fillStyle = particleColor;  // Transparent to act as background
     
     // Batched rendering for large improvement
     ctx.beginPath();
@@ -130,7 +138,7 @@ function draw() {
     ctx.fill();
 
     // Draw Attractors
-    ctx.fillStyle = "rgba(255, 32, 32, 0.3)";  // Transparent to act as background
+    ctx.fillStyle = attractorColor;  // Transparent to act as background
     
     ctx.beginPath();
     for (let a of attractors) {
