@@ -16,10 +16,9 @@ const attractorColor = getComputedStyle(document.documentElement)
 
 // // Main Program
 // Physics Constants
-let G = 100;
-let DT = 0.1;
+let G = 10;
+let DT = 0.5;
 let DAMPING = 0.001;
-let STEPS = 1;  // Steps per Frame Multiplier
 
 let M = 3;  // Number of Attractors
 let N = 10000;  // Number of Particles
@@ -96,64 +95,31 @@ window.addEventListener("resize", () => {
 });
 
 // Physics
-function netGravForceX(x: number, y: number): number {
-    let force = 0;
+function netGravForce(x: number, y: number): [number, number] {
+    let xForce = 0;
+    let yForce = 0;
 
     for (let a of attractors) {
         let dsq = (a.x - x) ** 2 + (a.y - y) ** 2;
 
         // Also includes vector normalization
-        force += G * a.m / (dsq * Math.sqrt(dsq)) * (a.x - x);
+        let forceMag = G * a.m / (dsq * Math.sqrt(dsq))
+        xForce += forceMag * (a.x - x);
+        yForce += forceMag * (a.y - y);
     }
 
-    return force;
-}
-function netGravForceY(x: number, y: number): number {
-    let force = 0;
-
-    for (let a of attractors) {
-        let dsq = (a.x - x) ** 2 + (a.y - y) ** 2;
-
-        // Also includes vector normalization
-        force += G * a.m * (a.y - y) / (dsq * Math.sqrt(dsq));
-    }
-
-    return force;
+    return [xForce, yForce];
 }
 
 
 function updateParticles() {
     for (let i = 0; i < N; i++) {
-        let k1, k2, k3, k4;
-
-        // RK4 for x axis velocity
-        k1 = DT * netGravForceX(particles.x[i], particles.y[i] );
-        k2 = DT * netGravForceX(particles.x[i], particles.y[i] + .5 * k1);
-        k3 = DT * netGravForceX(particles.x[i], particles.y[i] + .5 * k2);
-        k4 = DT * netGravForceX(particles.x[i], particles.y[i] + k3);
-        particles.vx[i] += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
-
-        // RK4 for y axis velocity
-        k1 = DT * netGravForceY(particles.x[i],            particles.y[i]);
-        k2 = DT * netGravForceY(particles.x[i] + .5 * k1, particles.y[i]);
-        k3 = DT * netGravForceY(particles.x[i] + .5 * k2, particles.y[i]);
-        k4 = DT * netGravForceY(particles.x[i] + k3,      particles.y[i]);
-        particles.vy[i] += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
-
-        // RK4 for x axis position
-        k1 = DT * (particles.vx[i]);
-        k2 = DT * (particles.vx[i] + .5 * k1);
-        k3 = DT * (particles.vx[i] + .5 * k2);
-        k4 = DT * (particles.vx[i] + k3);
-        particles.x[i] += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
-
-        // RK4 for y axis position
-        k1 = DT * (particles.vy[i] );
-        k2 = DT * (particles.vy[i] + .5 * k1);
-        k3 = DT * (particles.vy[i] + .5 * k2);
-        k4 = DT * (particles.vy[i] + k3);
-        particles.y[i] += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
-
+        let [axn, ayn] = netGravForce(particles.x[i], particles.y[i]);
+        particles.x[i] += DT * particles.vx[i] + 0.5 * DT * DT * axn;
+        particles.y[i] += DT * particles.vy[i] + 0.5 * DT * DT * ayn;
+        let [axn2, ayn2] = netGravForce(particles.x[i], particles.y[i]);
+        particles.vx[i] += (0.5 + +outOfBounds(particles.x[i], particles.y[i])) * DT * (axn + axn2);
+        particles.vy[i] += (0.5 + +outOfBounds(particles.x[i], particles.y[i])) * DT * (ayn + ayn2);
     }
 }
 
