@@ -15,9 +15,9 @@ const attractorColor = getComputedStyle(document.documentElement)
 // // Main Program
 // Physics Constants
 let G = 100;
-let DT = 0.01;
+let DT = 0.1;
 let DAMPING = 0.001;
-let STEPS = 20; // Steps per Frame Multiplier
+let STEPS = 1; // Steps per Frame Multiplier
 let M = 3; // Number of Attractors
 let N = 10000; // Number of Particles
 // Generate Particle List
@@ -77,31 +77,51 @@ window.addEventListener("resize", () => {
     });
 });
 // Physics
+function netGravForceX(x, y) {
+    let force = 0;
+    for (let a of attractors) {
+        let dsq = Math.pow((a.x - x), 2) + Math.pow((a.y - y), 2);
+        // Also includes vector normalization
+        force += G * a.m / (dsq * Math.sqrt(dsq)) * (a.x - x);
+    }
+    return force;
+}
+function netGravForceY(x, y) {
+    let force = 0;
+    for (let a of attractors) {
+        let dsq = Math.pow((a.x - x), 2) + Math.pow((a.y - y), 2);
+        // Also includes vector normalization
+        force += G * a.m * (a.y - y) / (dsq * Math.sqrt(dsq));
+    }
+    return force;
+}
 function updateParticles() {
     for (let i = 0; i < N; i++) {
-        let xForce = 0;
-        let yForce = 0;
-        for (let a of attractors) {
-            let dsq = Math.pow((a.x - particles.x[i]), 2) + Math.pow((a.y - particles.y[i]), 2);
-            let forceMag = G * a.m / (dsq * Math.sqrt(dsq)); // Also includes vector normalization
-            xForce += forceMag * (a.x - particles.x[i]);
-            yForce += forceMag * (a.y - particles.y[i]);
-        }
-        let resistance = DAMPING * +outOfBounds(particles.x[i], particles.y[i]) * (Math.pow(particles.x[i], 2) + Math.pow(particles.y[i], 2));
-        xForce -= particles.vx[i] * resistance;
-        yForce -= particles.vy[i] * resistance;
-        // Trapezoidal
-        // let vxo = particles.vx[i];
-        // let vyo = particles.vy[i];
-        // particles.vx[i] += DT * xForce;
-        // particles.vy[i] += DT * yForce;
-        // particles.x[i] += 0.5 * DT * (particles.vx[i] + vxo);  // Trapezoidal differential equation approximation
-        // particles.y[i] += 0.5 * DT * (particles.vy[i] + vyo);
-        // Euler
-        particles.vx[i] += DT * xForce;
-        particles.vy[i] += DT * yForce;
-        particles.x[i] += DT * particles.vx[i];
-        particles.y[i] += DT * particles.vy[i];
+        let k1, k2, k3, k4;
+        // RK4 for x axis velocity
+        k1 = DT * netGravForceX(particles.x[i], particles.y[i]);
+        k2 = DT * netGravForceX(particles.x[i], particles.y[i] + .5 * k1);
+        k3 = DT * netGravForceX(particles.x[i], particles.y[i] + .5 * k2);
+        k4 = DT * netGravForceX(particles.x[i], particles.y[i] + k3);
+        particles.vx[i] += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
+        // RK4 for y axis velocity
+        k1 = DT * netGravForceY(particles.x[i], particles.y[i]);
+        k2 = DT * netGravForceY(particles.x[i] + .5 * k1, particles.y[i]);
+        k3 = DT * netGravForceY(particles.x[i] + .5 * k2, particles.y[i]);
+        k4 = DT * netGravForceY(particles.x[i] + k3, particles.y[i]);
+        particles.vy[i] += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
+        // RK4 for x axis position
+        k1 = DT * (particles.vx[i]);
+        k2 = DT * (particles.vx[i] + .5 * k1);
+        k3 = DT * (particles.vx[i] + .5 * k2);
+        k4 = DT * (particles.vx[i] + k3);
+        particles.x[i] += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
+        // RK4 for y axis position
+        k1 = DT * (particles.vy[i]);
+        k2 = DT * (particles.vy[i] + .5 * k1);
+        k3 = DT * (particles.vy[i] + .5 * k2);
+        k4 = DT * (particles.vy[i] + k3);
+        particles.y[i] += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
     }
 }
 function draw() {
@@ -128,13 +148,7 @@ function draw() {
 }
 let lastTime = performance.now();
 function animate() {
-    let now = performance.now();
-    let dt = (now - lastTime) * DT;
-    lastTime = now;
-    let dynamicSteps = Math.min(Math.max(1, Math.floor(10 * dt / (DT * STEPS))), 50); // Adaptive step count
-    for (let i = 0; i < dynamicSteps; i++) {
-        updateParticles();
-    }
+    updateParticles();
     draw();
     requestAnimationFrame(animate);
 }
