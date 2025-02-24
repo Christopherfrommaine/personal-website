@@ -16,7 +16,7 @@ const attractorColor = getComputedStyle(document.documentElement)
 // Physics Constants
 let G = 100;
 let DT = 0.01;
-let DAMPING = 0.01;
+let DAMPING = 0.001;
 let STEPS = 20; // Steps per Frame Multiplier
 let M = 3; // Number of Attractors
 let N = 10000; // Number of Particles
@@ -87,15 +87,21 @@ function updateParticles() {
             xForce += forceMag * (a.x - particles.x[i]);
             yForce += forceMag * (a.y - particles.y[i]);
         }
-        let vxo = particles.vx[i];
-        let vyo = particles.vy[i];
-        let dynamicDampingFactor = 1 + 2 * +outOfBounds(particles.x[i], particles.y[i]) * (1 - 100 / (1000 + Math.abs(particles.x[i] + canvas.width * 0.5) + Math.abs(particles.y[i] + canvas.height * 0.5)));
+        let resistance = DAMPING * +outOfBounds(particles.x[i], particles.y[i]) * (Math.pow(particles.x[i], 2) + Math.pow(particles.y[i], 2));
+        xForce -= particles.vx[i] * resistance;
+        yForce -= particles.vy[i] * resistance;
+        // Trapezoidal
+        // let vxo = particles.vx[i];
+        // let vyo = particles.vy[i];
+        // particles.vx[i] += DT * xForce;
+        // particles.vy[i] += DT * yForce;
+        // particles.x[i] += 0.5 * DT * (particles.vx[i] + vxo);  // Trapezoidal differential equation approximation
+        // particles.y[i] += 0.5 * DT * (particles.vy[i] + vyo);
+        // Euler
         particles.vx[i] += DT * xForce;
         particles.vy[i] += DT * yForce;
-        particles.vx[i] *= (1 - DT * DAMPING * dynamicDampingFactor);
-        particles.vy[i] *= (1 - DT * DAMPING * dynamicDampingFactor);
-        particles.x[i] += 0.5 * DT * (particles.vx[i] + vxo); // Trapezoidal differential equation optimization
-        particles.y[i] += 0.5 * DT * (particles.vy[i] + vyo);
+        particles.x[i] += DT * particles.vx[i];
+        particles.y[i] += DT * particles.vy[i];
     }
 }
 function draw() {

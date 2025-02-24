@@ -1,10 +1,9 @@
 {
   "devDependencies": {
+    "braces": "^3.0.3",
     "live-server": "^1.2.2",
-    "typescript": "^5.7.3",
-    "braces": "^3.0.3"
+    "typescript": "^5.7.3"
   },
-
   "name": "personal-website",
   "version": "1.0.0",
   "main": "index.js",
@@ -12,7 +11,7 @@
     "build": "npx tsc",
     "open": "xdg-open \"http://localhost:8080\"",
     "server": "npx live-server dist/",
-    "serve": "npm run build && npx live-server dist/",
+    "serve": "npm run build && npx live-server dist/ --no-browser",
     "cloudflate-deploy": "cloudflared tunnel --url http://localhost:8080"
   },
   "keywords": [],
