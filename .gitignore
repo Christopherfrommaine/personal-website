@@ -1,1 +1,5 @@
 node_modules
+
+# Compressed for faster upload
+/dist/assets/gravsim 1080p 200dt.mp4
+/dist/assets/gravsim attractors 1080p 200dt.mp4

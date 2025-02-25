@@ -34,18 +34,18 @@ video {
   border-radius: 3px;
 }
 
-h2 {
+.main-content h2 {
   padding-top: 10px;
 }
 
 @media (max-width: 800px) {
-  .para1 {
+  #para1 {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .para2 {
+  #para2 {
     /* Remove div, allow for ordering in small screens */
     display: contents;
   }
