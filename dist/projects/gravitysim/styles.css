@@ -12,46 +12,51 @@ canvas {
   filter: blur(3px);
 }
 
-/* woot woot */
-
 a {
   color: white;
 }
 
-#text {
-  order: -1;
-}
-
 #gravsim-video {
   float: right;
+  margin: 10px 0 10px 25px;
+  width: 40%;
+  aspect-ratio: 16 / 9;
 }
 
-@media (min-width: 800px) {
+video {
+  width: 100%;
+}
 
-  #gravsim-videp {
-    float: inherit;
-  }
+.main-content img {
+  width: 100%;
+  margin-top: 50px;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+h2 {
+  padding-top: 10px;
 }
 
 @media (max-width: 800px) {
   .para1 {
     display: flex;
     flex-direction: column;
-  }
-
-  #text1 {
-    order: 1;
+    align-items: center;
   }
 
   .para2 {
+    /* Remove div, allow for ordering in small screens */
     display: contents;
   }
 
-  #gravsim-video {
-    order: 2;
+  #text1 {
+    order: -2;
   }
 
-  #text2 {
-    order: 3;
+  #gravsim-video {
+    order: -1;
+    width: 100%;
+    margin-left: 0;
   }
 }

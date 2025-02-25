@@ -49,12 +49,40 @@
       <div class="para2">
         <p id="text1"">This project is a gravitational simulation for a large number of light particles and a few heavy attractors. It was inspired originally by this video:</p> 
 
-        <p id="text2">I originally wrote it in python with numpy, and used it to make animations both like the background you see &lpar;which is actually a rewrite in typescript to run in the browser&rpar; as well as visualizations showing which attractor each point ended up closest to. You can see a full simulation <a href="/projects/gravitysim/display">here</a>.</p>
+        <p>
+          I originally wrote it in python with numpy, and used it to make animations both like the background you see &lpar;which is actually a rewrite in typescript to run in the browser&rpar; as well as visualizations showing which attractor each point ended up closest to. You can see the full browser-based simulation <a href="/projects/gravitysim/display">here</a>.
+        </p>
       </div>
-      
     </div>
 
+    <h2>Animations</h2>
+
+    <p>
+      Here is a video dispalying the simulation for a full grid of 1920x1080 particles: 
+    </p>
+    <video controls>
+      <source src="/assets/gravsim 1080p 200dt.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <p>
+      And this shows which attractor each of those particles is closest to at a given moment (with damping): 
+    </p>
+
+    <video controls>
+      <source src="/assets/gravsim attractors 1080p 200dt.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <h2>Images</h2>
+    <p>
+      Here are some assorted images generated with this program:
+    </p>
     
+    <img src="/assets/31.png">
+    <img src="/assets/276.png">
+    <img src="/assets/629.png">
+    <img src="/assets/10060.png">
   </div>
 
   <canvas id="particleCanvas"></canvas>
