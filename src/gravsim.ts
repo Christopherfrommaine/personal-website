@@ -47,6 +47,7 @@ interface Attractor {
     x: number;
     y: number;
     m: number;
+    gm: number;
 }
 
 let attractors: Attractor[] = [];
@@ -55,7 +56,7 @@ function randomAttractor(): Attractor {
     let y = attractorPadding * canvas.height + Math.random() * (1 - 2 * attractorPadding) * canvas.height;
     let m = 100 + 200 * Math.random()
 
-    return {x, y, m};
+    return {x, y, m, gm: G * m};
 }
 
 function randomFarAttractor(maxiter: number): Attractor {
@@ -99,32 +100,39 @@ window.addEventListener("resize", () => {
 });
 
 // Physics
+let MAX_DIST = 1_000_000 * (canvas.width * canvas.height);
 function updateParticles() {
     for (let i = 0; i < N; i++) {
         let xForce = 0;
         let yForce = 0;
 
+        let px = particles.x[i];
+        let py = particles.y[i];
+
+        let pvx = particles.vx[i];
+        let pvy = particles.vy[i];
+
+
         for (let a of attractors) {
-            let dsq = (a.x - particles.x[i]) ** 2 + (a.y - particles.y[i]) ** 2;
+            let dx = a.x - px;
+            let dy = a.y - py;
+
+            let invd = 1 / Math.sqrt(dx * dx + dy * dy);
 
             // This check would make it much more accurate physically, but it looks better without:
             // if (dsq > (IDENSITY * a.m) ** 2)
             
-            let forceMag = G * a.m / (dsq * Math.sqrt(dsq));  // Also includes vector normalization
-            xForce += forceMag * (a.x - particles.x[i]);
-            yForce += forceMag * (a.y - particles.y[i]);
-            
+            let forceMag = a.gm * invd * invd * invd;  // Also includes vector normalization
+            xForce += forceMag * dx;
+            yForce += forceMag * dy;
         }
 
         // Upper bound on particle distance
-        if (particles.x[i] ** 2 + particles.y[i] ** 2 > 1_000_000 * (canvas.width * canvas.height) ** 2) {
-            particles.vx[i] = 0;
-            particles.vy[i] = 0;
-        }
+        let oob = (px * px + py * py < MAX_DIST) ? 1 : 0;
         
         // Euler differential approximation
-        particles.vx[i] += DT * xForce;
-        particles.vy[i] += DT * yForce;
+        particles.vx[i] = oob * (pvx + DT * xForce);
+        particles.vy[i] = oob * (pvy + DT * yForce);
         particles.x[i] += DT * particles.vx[i];
         particles.y[i] += DT * particles.vy[i];
     }
@@ -138,6 +146,15 @@ const particleColor = getComputedStyle(document.documentElement)
 const attractorColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--color-gravsim-attractor").trim();
 
+// Precompute circle approximation, arc() can be expensive
+let polygon: number[][] = [];
+const vertices = 8;
+const radius = 2;
+for (let i = 0; i <= vertices; i++) {
+    let angle = 2 * i * Math.PI / vertices;
+    polygon.push([radius * Math.cos(angle), radius * Math.sin(angle)]);
+}
+
 // Draw all particles and attractors to the screen
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -149,8 +166,10 @@ function draw() {
     ctx.beginPath();
     for (let i = 0; i < N; i++) {
         if (!outOfBounds(particles.x[i], particles.y[i])) {
-            ctx.moveTo(particles.x[i] + 2, particles.y[i]);
-            ctx.arc(particles.x[i], particles.y[i], 2, 0, Math.PI * 2);
+            ctx.moveTo(particles.x[i] + polygon[0][0], particles.y[i] + polygon[0][1]);
+            for (let j = 1; j < vertices; j++) {
+                ctx.lineTo(particles.x[i] + polygon[j][0], particles.y[i] + polygon[j][1]);
+            }
         }
     }
     ctx.fill();

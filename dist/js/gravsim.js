@@ -5,13 +5,6 @@ const ctx = canvas.getContext("2d");
 document.body.appendChild(canvas);
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-// Define Colors
-const particleColor = getComputedStyle(document.documentElement)
-    .getPropertyValue("--color-gravsim-particle")
-    .trim();
-const attractorColor = getComputedStyle(document.documentElement)
-    .getPropertyValue("--color-gravsim-attractor")
-    .trim();
 // // Main Program
 // Physics Constants
 let G = 100;
@@ -21,7 +14,6 @@ let STEPS = 20; // Steps per Frame Multiplier
 let IDENSITY = 0.05; // Pixels per unit of mass
 let M = 3; // Number of Attractors
 let N = 10000; // Number of Particles
-// // Program
 // Generate Particle List
 let particles = {
     x: new Float32Array(N),
@@ -41,23 +33,31 @@ for (let x = 0; x < canvas.width; x += dx) {
         }
     }
 }
-let attractorPadding = 0.2;
+// Generate Attractor List
+let attractorPadding = 0.2; // Proportion of the screen in which attractors will not spawn
+let attractors = [];
 function randomAttractor() {
     let x = attractorPadding * canvas.width + Math.random() * (1 - 2 * attractorPadding) * canvas.width;
     let y = attractorPadding * canvas.height + Math.random() * (1 - 2 * attractorPadding) * canvas.height;
     let m = 100 + 200 * Math.random();
-    return { x, y, m };
+    return { x, y, m, gm: G * m };
 }
-let attractors = [];
-for (let i = 0; attractors.length < M; i++) {
+function randomFarAttractor(maxiter) {
     let a = randomAttractor();
-    let minDist = Infinity;
-    for (let ao of attractors) {
-        minDist = Math.min(minDist, Math.pow((ao.x - a.x), 2) + Math.pow((ao.y - a.y), 2));
+    for (let i = 0; i <= maxiter; i++) {
+        let minDist = Infinity;
+        for (let ao of attractors) {
+            minDist = Math.min(minDist, Math.pow((ao.x - a.x), 2) + Math.pow((ao.y - a.y), 2));
+        }
+        if (minDist > 30000) {
+            return a;
+        }
+        a = randomAttractor();
     }
-    if (minDist > 30000 || i > 10) {
-        attractors.push(a);
-    }
+    return a;
+}
+for (let i = 0; i < M; i++) {
+    attractors.push(randomFarAttractor(10));
 }
 // Resize Logic
 let resizeTimeout = null;
@@ -72,50 +72,72 @@ window.addEventListener("resize", () => {
         canvas.height = window.innerHeight;
         for (let i = 0; i < M; i++) {
             if (outOfBounds(attractors[i].x, attractors[i].y)) {
-                attractors[i] = randomAttractor();
+                attractors[i] = randomFarAttractor(10);
             }
         }
     });
 });
 // Physics
+let MAX_DIST = 1000000 * (canvas.width * canvas.height);
 function updateParticles() {
     for (let i = 0; i < N; i++) {
         let xForce = 0;
         let yForce = 0;
+        let px = particles.x[i];
+        let py = particles.y[i];
+        let pvx = particles.vx[i];
+        let pvy = particles.vy[i];
         for (let a of attractors) {
-            let dsq = Math.pow((a.x - particles.x[i]), 2) + Math.pow((a.y - particles.y[i]), 2);
-            // This would be much more accurate physically, but I like how mine looks:
+            let dx = a.x - px;
+            let dy = a.y - py;
+            let invd = 1 / Math.sqrt(dx * dx + dy * dy);
+            // This check would make it much more accurate physically, but it looks better without:
             // if (dsq > (IDENSITY * a.m) ** 2)
-            let forceMag = G * a.m / (dsq * Math.sqrt(dsq)); // Also includes vector normalization
-            xForce += forceMag * (a.x - particles.x[i]);
-            yForce += forceMag * (a.y - particles.y[i]);
+            let forceMag = a.gm * invd * invd * invd; // Also includes vector normalization
+            xForce += forceMag * dx;
+            yForce += forceMag * dy;
         }
-        if (Math.pow(particles.x[i], 2) + Math.pow(particles.y[i], 2) > 1000000 * Math.pow((canvas.width * canvas.height), 2)) {
-            particles.vx[i] = 0;
-            particles.vy[i] = 0;
-        }
-        // Euler
-        particles.vx[i] += DT * xForce;
-        particles.vy[i] += DT * yForce;
+        // Upper bound on particle distance
+        let oob = (px * px + py * py < MAX_DIST) ? 1 : 0;
+        // Euler differential approximation
+        particles.vx[i] = oob * (pvx + DT * xForce);
+        particles.vy[i] = oob * (pvy + DT * yForce);
         particles.x[i] += DT * particles.vx[i];
         particles.y[i] += DT * particles.vy[i];
     }
 }
+// // Display and loop
+// Define Colors
+const particleColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--color-gravsim-particle").trim();
+const attractorColor = getComputedStyle(document.documentElement)
+    .getPropertyValue("--color-gravsim-attractor").trim();
+// Precompute circle approximation
+let polygon = [];
+const vertices = 8;
+const radius = 2;
+for (let i = 0; i <= vertices; i++) {
+    let angle = 2 * i * Math.PI / vertices;
+    polygon.push([radius * Math.cos(angle), radius * Math.sin(angle)]);
+}
+// Draw all particles and attractors to the screen
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Draw Particles
-    ctx.fillStyle = particleColor; // Transparent to act as background
+    ctx.fillStyle = particleColor;
     // Batched rendering for large improvement
     ctx.beginPath();
     for (let i = 0; i < N; i++) {
         if (!outOfBounds(particles.x[i], particles.y[i])) {
-            ctx.moveTo(particles.x[i] + 2, particles.y[i]);
-            ctx.arc(particles.x[i], particles.y[i], 2, 0, Math.PI * 2);
+            ctx.moveTo(particles.x[i] + polygon[0][0], particles.y[i] + polygon[0][1]);
+            for (let j = 1; j < vertices; j++) {
+                ctx.lineTo(particles.x[i] + polygon[j][0], particles.y[i] + polygon[j][1]);
+            }
         }
     }
     ctx.fill();
     // Draw Attractors
-    ctx.fillStyle = attractorColor; // Transparent to act as background
+    ctx.fillStyle = attractorColor;
     ctx.beginPath();
     for (let a of attractors) {
         ctx.moveTo(a.x + IDENSITY * a.m, a.y);
