@@ -25,22 +25,17 @@ let M = 3;  // Number of Attractors
 let N = 10000;  // Number of Particles
 
 // // Program
-interface Attractor {
-    x: number;
-    y: number;
-    m: number;
-}
-
 // Generate Particle List
-let dx = Math.ceil(canvas.width / Math.sqrt(N * canvas.width / canvas.height));
-let dy = Math.ceil(canvas.height / Math.sqrt(N * canvas.height / canvas.width));
-
 let particles = {
     x: new Float32Array(N),
     y: new Float32Array(N),
     vx: new Float32Array(N),
     vy: new Float32Array(N),
 };
+
+let dx = Math.ceil(canvas.width / Math.sqrt(N * canvas.width / canvas.height));
+let dy = Math.ceil(canvas.height / Math.sqrt(N * canvas.height / canvas.width));
+
 let index = 0;
 for (let x = 0; x < canvas.width; x += dx) {
     for (let y = 0; y < canvas.height; y += dy) {
@@ -54,6 +49,12 @@ for (let x = 0; x < canvas.width; x += dx) {
 
 
 // Generate Attractor List
+interface Attractor {
+    x: number;
+    y: number;
+    m: number;
+}
+
 let attractorPadding = 0.2;
 function randomAttractor(): Attractor {
 
@@ -109,10 +110,15 @@ function updateParticles() {
             yForce += forceMag * (a.y - particles.y[i]);
         }
 
-        let resistance = DAMPING * +outOfBounds(particles.x[i], particles.y[i]) * (particles.x[i] ** 2 + particles.y[i] ** 2);
+        // let resistance = DAMPING * +outOfBounds(particles.x[i], particles.y[i]) * (particles.x[i] ** 2 + particles.y[i] ** 2);
         
-        xForce -= particles.vx[i] * resistance;
-        yForce -= particles.vy[i] * resistance;
+        // xForce -= particles.vx[i] * resistance;
+        // yForce -= particles.vy[i] * resistance;
+
+        if (particles.x[i] ** 2 + particles.y[i] ** 2 > 1_000_000 * (canvas.width * canvas.height) ** 2) {
+            particles.vx[i] = 0;
+            particles.vy[i] = 0;
+        }
         
         // Euler
         particles.vx[i] += DT * xForce;

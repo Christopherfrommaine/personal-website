@@ -20,15 +20,16 @@ let DAMPING = 0.001;
 let STEPS = 20; // Steps per Frame Multiplier
 let M = 3; // Number of Attractors
 let N = 10000; // Number of Particles
+// // Program
 // Generate Particle List
-let dx = Math.ceil(canvas.width / Math.sqrt(N * canvas.width / canvas.height));
-let dy = Math.ceil(canvas.height / Math.sqrt(N * canvas.height / canvas.width));
 let particles = {
     x: new Float32Array(N),
     y: new Float32Array(N),
     vx: new Float32Array(N),
     vy: new Float32Array(N),
 };
+let dx = Math.ceil(canvas.width / Math.sqrt(N * canvas.width / canvas.height));
+let dy = Math.ceil(canvas.height / Math.sqrt(N * canvas.height / canvas.width));
 let index = 0;
 for (let x = 0; x < canvas.width; x += dx) {
     for (let y = 0; y < canvas.height; y += dy) {
@@ -39,7 +40,6 @@ for (let x = 0; x < canvas.width; x += dx) {
         }
     }
 }
-// Generate Attractor List
 let attractorPadding = 0.2;
 function randomAttractor() {
     let x = attractorPadding * canvas.width + Math.random() * (1 - 2 * attractorPadding) * canvas.width;
@@ -87,16 +87,13 @@ function updateParticles() {
             xForce += forceMag * (a.x - particles.x[i]);
             yForce += forceMag * (a.y - particles.y[i]);
         }
-        let resistance = DAMPING * +outOfBounds(particles.x[i], particles.y[i]) * (Math.pow(particles.x[i], 2) + Math.pow(particles.y[i], 2));
-        xForce -= particles.vx[i] * resistance;
-        yForce -= particles.vy[i] * resistance;
-        // Trapezoidal
-        // let vxo = particles.vx[i];
-        // let vyo = particles.vy[i];
-        // particles.vx[i] += DT * xForce;
-        // particles.vy[i] += DT * yForce;
-        // particles.x[i] += 0.5 * DT * (particles.vx[i] + vxo);  // Trapezoidal differential equation approximation
-        // particles.y[i] += 0.5 * DT * (particles.vy[i] + vyo);
+        // let resistance = DAMPING * +outOfBounds(particles.x[i], particles.y[i]) * (particles.x[i] ** 2 + particles.y[i] ** 2);
+        // xForce -= particles.vx[i] * resistance;
+        // yForce -= particles.vy[i] * resistance;
+        if (Math.pow(particles.x[i], 2) + Math.pow(particles.y[i], 2) > 1000000 * Math.pow((canvas.width * canvas.height), 2)) {
+            particles.vx[i] = 0;
+            particles.vy[i] = 0;
+        }
         // Euler
         particles.vx[i] += DT * xForce;
         particles.vy[i] += DT * yForce;

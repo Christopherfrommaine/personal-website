@@ -3,6 +3,7 @@
   height: 275px;
   object-fit: cover;  /* Crop instead of squish */
   object-position: 48%;
+  
   float: left;  /* Display image and paragraph on same line, wrapping text around */
   margin: 0 25px 10px 0;
   border: 2px solid white;
