@@ -18,6 +18,7 @@ let G = 100;
 let DT = 0.01;
 let DAMPING = 0.001;
 let STEPS = 20; // Steps per Frame Multiplier
+let IDENSITY = 0.05; // Pixels per unit of mass
 let M = 3; // Number of Attractors
 let N = 10000; // Number of Particles
 // // Program
@@ -83,13 +84,12 @@ function updateParticles() {
         let yForce = 0;
         for (let a of attractors) {
             let dsq = Math.pow((a.x - particles.x[i]), 2) + Math.pow((a.y - particles.y[i]), 2);
+            // This would be much more accurate physically, but I like how mine looks:
+            // if (dsq > (IDENSITY * a.m) ** 2)
             let forceMag = G * a.m / (dsq * Math.sqrt(dsq)); // Also includes vector normalization
             xForce += forceMag * (a.x - particles.x[i]);
             yForce += forceMag * (a.y - particles.y[i]);
         }
-        // let resistance = DAMPING * +outOfBounds(particles.x[i], particles.y[i]) * (particles.x[i] ** 2 + particles.y[i] ** 2);
-        // xForce -= particles.vx[i] * resistance;
-        // yForce -= particles.vy[i] * resistance;
         if (Math.pow(particles.x[i], 2) + Math.pow(particles.y[i], 2) > 1000000 * Math.pow((canvas.width * canvas.height), 2)) {
             particles.vx[i] = 0;
             particles.vy[i] = 0;
@@ -118,8 +118,8 @@ function draw() {
     ctx.fillStyle = attractorColor; // Transparent to act as background
     ctx.beginPath();
     for (let a of attractors) {
-        ctx.moveTo(a.x + 0.05 * a.m, a.y);
-        ctx.arc(a.x, a.y, 0.05 * a.m, 0, Math.PI * 2);
+        ctx.moveTo(a.x + IDENSITY * a.m, a.y);
+        ctx.arc(a.x, a.y, IDENSITY * a.m, 0, Math.PI * 2);
     }
     ctx.fill();
 }
