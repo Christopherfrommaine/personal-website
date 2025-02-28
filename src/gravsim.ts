@@ -9,14 +9,14 @@ canvas.height = window.innerHeight;
 
 // // Main Program
 // Physics Constants
-let G = 100;
-let DT = 0.01;
-let DAMPING = 0.001;
-let STEPS = 20;  // Steps per Frame Multiplier
-let IDENSITY = 0.05;  // Pixels per unit of mass
+const G = 100;
+const DT = 0.01;
+const DAMPING = 0.001;
+const STEPS = 20;  // Steps per Frame Multiplier
+const IDENSITY = 0.05;  // Pixels per unit of mass
 
-let M = 3;  // Number of Attractors
-let N = 10000;  // Number of Particles
+const M = 3;  // Number of Attractors
+const N = 10000;  // Number of Particles
 
 // Generate Particle List
 let particles = {
@@ -26,8 +26,8 @@ let particles = {
     vy: new Float32Array(N),
 };
 
-let dx = Math.ceil(canvas.width / Math.sqrt(N * canvas.width / canvas.height));
-let dy = Math.ceil(canvas.height / Math.sqrt(N * canvas.height / canvas.width));
+const dx = Math.ceil(canvas.width / Math.sqrt(N * canvas.width / canvas.height));
+const dy = Math.ceil(canvas.height / Math.sqrt(N * canvas.height / canvas.width));
 
 let index = 0;
 for (let x = 0; x < canvas.width; x += dx) {
@@ -41,7 +41,7 @@ for (let x = 0; x < canvas.width; x += dx) {
 }
 
 // Generate Attractor List
-let attractorPadding = 0.2;  // Proportion of the screen in which attractors will not spawn
+const attractorPadding = 0.2;  // Proportion of the screen in which attractors will not spawn
 
 interface Attractor {
     x: number;
@@ -100,7 +100,7 @@ window.addEventListener("resize", () => {
 });
 
 // Physics
-let MAX_DIST = 1_000_000 * (canvas.width * canvas.height);
+const MAX_DIST = 1_000_000 * (canvas.width * canvas.height);
 function updateParticles() {
     for (let i = 0; i < N; i++) {
         let xForce = 0;
@@ -120,6 +120,7 @@ function updateParticles() {
             let invd = 1 / Math.sqrt(dx * dx + dy * dy);
 
             // This check would make it much more accurate physically, but it looks better without:
+            // Also adds a conditional, which is expensive.
             // if (dsq > (IDENSITY * a.m) ** 2)
             
             let forceMag = a.gm * invd * invd * invd;  // Also includes vector normalization
@@ -147,10 +148,10 @@ const attractorColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--color-gravsim-attractor").trim();
 
 // Precompute circle approximation, arc() can be expensive
-let polygon: number[][] = [];
 const vertices = 8;
 const radius = 2;
-for (let i = 0; i <= vertices; i++) {
+let polygon: number[][] = [];
+for (let i = 0; i < vertices; i++) {
     let angle = 2 * i * Math.PI / vertices;
     polygon.push([radius * Math.cos(angle), radius * Math.sin(angle)]);
 }
@@ -167,7 +168,7 @@ function draw() {
     for (let i = 0; i < N; i++) {
         if (!outOfBounds(particles.x[i], particles.y[i])) {
             ctx.moveTo(particles.x[i] + polygon[0][0], particles.y[i] + polygon[0][1]);
-            for (let j = 1; j < vertices; j++) {
+            for (let j = 0; j < vertices; j++) {
                 ctx.lineTo(particles.x[i] + polygon[j][0], particles.y[i] + polygon[j][1]);
             }
         }
@@ -188,7 +189,7 @@ function draw() {
 let lastTime = performance.now();
 function animate() {
     let now = performance.now();
-    let dt = (now - lastTime) * DT; 
+    let dt = (now - lastTime) * DT;    
     lastTime = now;
     let dynamicSteps = Math.min(Math.max(1, Math.floor(10 * dt / (DT * STEPS))), 50);  // Adaptive step count
     for (let i = 0; i < dynamicSteps; i++) {updateParticles();}

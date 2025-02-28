@@ -49,7 +49,7 @@
 }
 
 .dropdown-content {
-  display: none;  /* Remove Bullets */
+  display: none;
   position: absolute;  /* Below Parent */
   top: 100%;
   left: 10px;  /* Same as padding for .nav-menu */
@@ -74,4 +74,46 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
-}  
+}
+
+.hamburger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Mobile Styles */
+@media (max-width: 1000px) {
+  .nav-menu {
+      display: none; /* Hide normal nav on small screens */
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 15%;
+      margin-right: -40px;
+      background: var(--color-page-gradient-top);
+      box-shadow: 0 4px 6px var(--color-shadow-opacity);
+  }
+
+  .nav-menu.show {
+    display: flex; /* Show as dropdown when toggled */
+  }
+
+  .nav-menu li {
+    text-align: center;
+  }
+
+  .hamburger {
+      display: block;
+      font-size: 30px;
+      cursor: pointer;
+      color: white;
+      padding: 10px;
+  }
+
+  .dropdown-content {
+      position: absolute;
+      left: -100px;
+  }
+
+}

@@ -12,7 +12,7 @@
     "open": "xdg-open \"http://localhost:8080\"",
     "server": "npx live-server dist/",
     "serve": "npm run build && npx live-server dist/ --no-browser",
-    "cloudflate-deploy": "cloudflared tunnel --url http://localhost:8080"
+    "cloudflare-deploy": "cloudflared tunnel --url http://localhost:8080"
   },
   "keywords": [],
   "author": "Christopherfrommaine",

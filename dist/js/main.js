@@ -10,9 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .catch(error => console.error('Error loading global header:', error));
     }
-    else {
-        console.warn('Global header element not found on the page');
-    }
 });
 // Replace global-footer elements with global/global-footer.html
 document.addEventListener('DOMContentLoaded', function () {
@@ -25,10 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .catch(error => console.error('Error loading global footer:', error));
     }
-    else {
-        console.warn('Global footer element not found on the page');
-    }
 });
+// Loaded class for fade-in
 document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("loaded");
 });
+// Toggles the hamburger menu on mobile
+function toggleMenu() {
+    const navLinks = document.querySelector(".nav-menu");
+    if (navLinks) {
+        navLinks.classList.toggle("show");
+    }
+}
