@@ -1,30 +1,30 @@
 .site-footer {
-  background-color: var(--color-page-gradient-top);
-  color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 2;
+    background-color: var(--color-page-gradient-top);
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
 }
 
 .site-footer a {
-  color: white;
-  text-decoration: none;
-  margin: 0 2% 0 2%;
-  font-size: 24px;
+    color: white;
+    text-decoration: none;
+    margin: 0 2% 0 2%;
+    font-size: 24px;
 }
 
 .site-footer a:hover {
-  color: color-mix(in srgb, white 100%, var(--color-shadow-opacity) 100%);
+    color: color-mix(in srgb, white 100%, var(--color-shadow-opacity) 100%);
 }
 
 .footer-links {
-  padding-top: 15px;
+    padding-top: 15px;
 }
 
 .copyright {
-  font-size: 15px;
-  font-family: 'Comfortaa', sans-serif;
-  padding: 5px 0 5px 0;
+    font-size: 15px;
+    font-family: 'Comfortaa', sans-serif;
+    padding: 5px 0 5px 0;
 }

@@ -1,67 +1,78 @@
 /* Colors and Global Variables */
 :root {
-  --color-page-gradient-top: #151726;
-  --color-page-gradient-bottom: #121212;
-  --color-shadow-opacity: rgba(0, 0, 0, 0.5);
+    --color-page-gradient-top: #151726;
+    --color-page-gradient-bottom: #121212;
+    --color-shadow-opacity: rgba(0, 0, 0, 0.5);
 
-  --color-gravsim-particle: rgba(255, 255, 255, 0.3);
-  --color-gravsim-attractor: rgba(255, 32, 32, 0.3)
+    --color-gravsim-particle: rgba(255, 255, 255, 0.3);
+    --color-gravsim-attractor: rgba(255, 32, 32, 0.3)
 }
 
 /* Basic Page Layout */
 html, body {
-  /* Fill to bottom, so footer is pushed down */
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
+    /* Fill to bottom, so footer is pushed down */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
 
-  /* Slight Gradient Background */
-  background: linear-gradient(to bottom, var(--color-page-gradient-top), var(--color-page-gradient-bottom));
-  background-attachment: fixed;
+    /* Slight Gradient Background */
+    background: linear-gradient(to bottom, var(--color-page-gradient-top), var(--color-page-gradient-bottom));
+    background-attachment: fixed;
 }
 
 /* Default Formatting */
 .main-content {
-  flex: 1; /* Fill to bottom, so footer is pushed down */
-  padding: 30px 20% 0 20%;
-  color: white;
-  font-display: swap;
-  font-family: 'Comfortaa', sans-serif;
+    flex: 1; /* Fill to bottom, so footer is pushed down */
+    padding: 30px 20% 0 20%;
+    color: white;
+    font-display: swap;
+    font-family: 'Comfortaa', sans-serif;
 }
 #global-footer {
-  margin: 0;
-  padding: 20px 0 0 0;
+    margin: 0;
+    padding: 20px 0 0 0;
 }
 
 h1 {
-  margin: 0;
-  font-size: 36px;
+    margin: 0;
+    font-size: 36px;
 }
 h2 {
-  margin: 25px 0 5px 0;
+    margin: 25px 0 5px 0;
 }
 p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
-  line-height: 30px;
-  margin: 8px 0 8px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+    margin: 8px 0 8px 0;
 }
 
 /* Fade-In Transition */
 body {
-  opacity: 0;
-  transition: opacity 0.3s ease-in;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
 }
 body.loaded {
-  opacity: 1;
+    opacity: 1;
 }
 
+.mobile-only {
+    display: none;
+}
 
 @media (max-width: 1000px) {
-  .main-content {
+
+    .desktop-only {
+    display: none;
+    }
+    .mobile-only {
+    display: revert;
+    }
+
+    .main-content {
     padding-left: 5%;
     padding-right: 5%;
-  }
+    }
 }

@@ -1,62 +1,62 @@
 body {z-index: 0;}
 
 canvas {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  pointer-events: none;
-  filter: blur(3px);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(3px);
 }
 
 a {
-  color: white;
+    color: white;
 }
 
 #gravsim-video {
-  float: right;
-  margin: 10px 0 10px 25px;
-  width: 40%;
-  aspect-ratio: 16 / 9;
+    float: right;
+    margin: 10px 0 10px 25px;
+    width: 40%;
+    aspect-ratio: 16 / 9;
 }
 
 video {
-  width: 100%;
+    width: 100%;
 }
 
 .main-content img {
-  width: 100%;
-  margin-top: 50px;
-  border: 2px solid white;
-  border-radius: 3px;
+    width: 100%;
+    margin-top: 50px;
+    border: 2px solid white;
+    border-radius: 3px;
 }
 
 .main-content h2 {
-  padding-top: 10px;
+    padding-top: 10px;
 }
 
 @media (max-width: 800px) {
-  #para1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    #para1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-  #para2 {
-    /* Remove div, allow for ordering in small screens */
-    display: contents;
-  }
+    #para2 {
+        /* Remove div, allow for ordering in small screens */
+        display: contents;
+    }
 
-  #text1 {
-    order: -2;
-  }
+    #text1 {
+        order: -2;
+    }
 
-  #gravsim-video {
-    order: -1;
-    width: 100%;
-    margin-left: 0;
-  }
+    #gravsim-video {
+        order: -1;
+        width: 100%;
+        margin-left: 0;
+    }
 }

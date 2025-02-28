@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.add("loaded");
 });
 // Toggles the hamburger menu on mobile
-function toggleMenu() {
+document.addEventListener("click", function () {
     const navLinks = document.querySelector(".nav-menu");
     if (navLinks) {
         navLinks.classList.toggle("show");
     }
-}
+});
