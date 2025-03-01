@@ -2,11 +2,10 @@
   "devDependencies": {
     "braces": "^3.0.0",
     "live-server": "^1.2.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
   "name": "personal-website",
   "version": "1.0.0",
-
   "scripts": {
     "build": "npx tsc",
     "open": "xdg-open \"http://localhost:8080\"",

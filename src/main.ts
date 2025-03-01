@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.text())
         .then(data => {
             headerElement.innerHTML = data;
+
+            // Manually load hamburger.js AFTER injecting global-header.html
+            const script = document.createElement('script');
+            script.src = '/js/hamburger.js';
+            script.defer = true;
+            document.body.appendChild(script);
         })
         .catch(error => console.error('Error loading global header:', error));
     }
@@ -29,13 +35,4 @@ document.addEventListener('DOMContentLoaded', function() {
 // Loaded class for fade-in
 document.addEventListener("DOMContentLoaded", function() {
     document.body.classList.add("loaded");
-});
-
-// Toggles the hamburger menu on mobile
-document.addEventListener("click", function() {
-    const navLinks = document.querySelector(".nav-menu");
-
-    if (navLinks) {
-        navLinks.classList.toggle("show")
-    }
 });

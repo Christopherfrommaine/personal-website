@@ -84,6 +84,7 @@
 /* Mobile Styles */
 @media (max-width: 1000px) {
     .nav-menu {
+        display: none;
         flex-direction: column;
         position: absolute;
         top: 60px;
