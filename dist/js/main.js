@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', function () {
             script.src = '/js/hamburger.js';
             script.defer = true;
             document.body.appendChild(script);
+            // Manually load goatcounter AFTER injecting global-header.html
+            const script2 = document.createElement('script');
+            script2.src = '';
+            script2.defer = true;
+            document.body.appendChild(script2);
         })
             .catch(error => console.error('Error loading global header:', error));
     }
