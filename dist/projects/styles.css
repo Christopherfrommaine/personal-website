@@ -9,6 +9,8 @@ canvas {
     pointer-events: none;
 }
 
-.site-footer {
-    z-index: 999;
+.main-content a {
+    display: block;
+    color: white;
+    padding-top: 10px;
 }
