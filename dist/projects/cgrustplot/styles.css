@@ -1,0 +1,12 @@
+a {
+    color: white;
+}
+
+p {
+    padding-top: 10px;
+}
+
+video, img {
+    width: 100%;
+    height: auto;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Link Stylesheets -->
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Import Favicons -->
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/assets/favicons/apple-touch-icon.png">
+
+  <!-- Import Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+
+  <!-- Page Title -->
+  <title>CG: Rustplot</title>
+</head>
+
+<body>
+  <header id="global-header"></header>
+
+  <div class="main-content">
+    
+    <h1>CG Rustplot &lpar;
+      <a href="https://github.com/christopherfrommaine/rustplot" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i><span class="sr-only">Project Link</span></a>
+        &rpar;
+    </h1>
+
+    <p>
+      A terminal-based plotting library for Rust. Here's an animation of a function plot of a square wave fourier series with different chaning phases:
+    </p>
+
+    <video autoplay loop muted playsinline width="300">
+      <source src="/assets/output3.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <p>
+      It has many different plot types, including scatterplot, regionplot, densityplot, etc. Check out the README on GitHub for a full list with examples.
+
+      For example, here is a binned array plot which shows a function similar to f(x, y) = sin(x * y):
+    </p>
+
+    <img src="/assets/densityplot1.png"></image>
+
+    <p>
+      One of the other cool features is that the function plot automatically determines an "interesting" domain to plot it over. It will find points of interest on the function by using numerical techniques, and will try to fit a plot to match them. For example, here is the plot of a polynomial without having to input anything except the function itself:
+    </p>
+
+    <img src="/assets/functionplot1.png"></image>
+
+    <p>
+      It was originally written because I didn't find any good alternatives that were super simple and easy to use. I was doing mathematical optimization using rust, so I just wanted a fast, easy plotting library to see the current progress.
+
+      It now has over 800 downloads <a href="https://crates.io/crates/cgrustplot">on crates.io</a> and is being updated with new features every release.
+    </p>
+
+    <div>
+
+    </div>
+
+
+  </div>
+  
+  <footer id="global-footer"></footer>
+
+  <script defer src="/js/main.js"></script>
+</body>
