@@ -1,10 +1,10 @@
 /* Colors and Global Variables */
 :root {
-    --color-page-gradient-top: #151726;
+    --color-page-gradient-top: #161830;
     --color-page-gradient-bottom: #121212;
     --color-shadow-opacity: rgba(0, 0, 0, 0.5);
 
-    --color-gravsim-particle: rgba(255, 255, 255, 0.3);
+    --color-gravsim-particle: rgba(255, 255, 255, 0.4);
     --color-gravsim-attractor: rgba(255, 32, 32, 0.3)
 }
 
