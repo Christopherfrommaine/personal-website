@@ -7,7 +7,7 @@
   "name": "personal-website",
   "version": "1.0.0",
   "scripts": {
-    "build": "npx tsc && cp dist/projects/personal-website/index.html dist/projects/personal-website/index.txt",
+    "build": "npx tsc && (cat dist/projects/personal-website/index.html; echo \"\"; echo \"\"; cat dist/projects/personal-website/styles.css; echo \"\"; echo \"\"; cat src/main.ts) > dist/projects/personal-website/index.txt",
     "open": "xdg-open \"http://localhost:8080\"",
     "server": "npx live-server dist/",
     "serve": "npm run build && npx live-server dist/ --no-browser",
