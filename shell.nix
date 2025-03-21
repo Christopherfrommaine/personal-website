@@ -4,7 +4,7 @@ in pkgs.mkShell {
   buildInputs = [
 
     pkgs.nodejs_23
-    pkgs.rustup
+    pkgs.python3
 
   ];
 

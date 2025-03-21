@@ -1,3 +1,4 @@
+```index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,10 +37,10 @@
       This is the website you're on right now! It is my first foray into webdev, as I've never used HTML, CSS, or TS before, and I've learned a ton about how web pages work. The site is hosted on Netlify, though I may self-host later if I'm limited by the free subscription. It's also all open source and under an MIT license if others want to use it as a template for other websites.
     </p>
     <p>
-      For an example of some of the code that this website uses, here is this page's code. The rest can be found on GitHub:
+      It's entirely handwritten, so the code for every page is human-readable. Check out the source code for the page you're looking at right now: The rest can be found on GitHub under an MIT license.
     </p>
 
-    <iframe src="/projects/personal-website/index.txt"></iframe>
+    <iframe src="/projects/personal-website/webpage-source.txt"></iframe>
 
   </div>
   
@@ -48,7 +49,9 @@
   <script defer src="/js/main.js"></script>
 </body>
 
+```
 
+```styles.css
 a {
     color: white;
 }
@@ -61,7 +64,9 @@ iframe {
     width: 100%;
     aspect-ratio: 16 / 9;
 }
+```
 
+```main.ts
 // Replace global-header elements with global/global-header.html
 document.addEventListener('DOMContentLoaded', function() {
     const headerElement = document.getElementById('global-header');
@@ -107,3 +112,4 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("DOMContentLoaded", function() {
     document.body.classList.add("loaded");
 });
+```
