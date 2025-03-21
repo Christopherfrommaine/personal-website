@@ -37,7 +37,7 @@
     </p>
 
     <video autoplay loop muted playsinline width="300">
-      <source src="/assets/output3.mp4" type="video/mp4">
+      <source src="/assets/animatedfunctionplot1.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
@@ -56,9 +56,33 @@
     <img src="/assets/functionplot1.png"></image>
 
     <p>
-      It was originally written because I didn't find any good alternatives that were super simple and easy to use. I was doing mathematical optimization using rust, so I just wanted a fast, easy plotting library to see the current progress.
+      The <em>entirety</em> of the code used to generate this image is as follows:
+    </p>
 
-      It now has over 800 downloads <a href="https://crates.io/crates/cgrustplot">on crates.io</a> and is being updated with new features every release.
+    <pre class="code">
+      use cgrustplot::plots::function_plot::function_plot;
+
+      fn main() {
+        // a cool-looking function
+        let f = |x: f64| -x + 2. * x * x + x * x * x;
+
+        // plot it, save it
+        function_plot(&f)
+            .set_size((200, 30))
+            .as_image()
+            .save("function_plot_demonstration.png");
+      }
+    </pre>
+
+    <p>
+      Even the animation at the top of the page was rendered entirely in rust using constructs from this library. Frames were created an exported with function_plot, and they were rendered with animation_plot (using a slightly hacky method to make it render arbitrary image files into an animation).
+    </p>
+
+    <h2> Purpose </h2>
+    <p>
+      It was originally written because I didn't know of any good plotting libraries for rust that were super simple and easy to use. I was doing projects around mathematical optimization, so I just wanted an easy plotting library to visualize current progress.
+
+      It now has <span id="download-count"><em>[Error fetching download count from crates.io]</em></span> downloads on <a href="https://crates.io/crates/cgrustplot">crates.io</a> and is being updated with new features every release.
     </p>
 
     <div>
@@ -71,4 +95,5 @@
   <footer id="global-footer"></footer>
 
   <script defer src="/js/main.js"></script>
+  <script defer src="/js/download_count.js"></script>
 </body>
