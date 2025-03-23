@@ -12,5 +12,8 @@ in pkgs.mkShell {
   shellHook = ''
     npm install -D typescript
     npm install -D live-server
+
+    alias serve="npm run localserve"
+    alias s="npm run localserve"
   '';
 }

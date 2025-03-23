@@ -4,6 +4,7 @@ fontsize: 12pt
 linestretch: 1.15
 numbersections: false
 pagestyle: empty
+colorlinks: true
 ---
 
 # Christopher Gilbert
@@ -56,7 +57,7 @@ AP Statistics, AP Physics C Electricity and Magnetism, IB Latin IV in progress
 - **Mentor** | Junior World Science Scholars | 2023–2024
 - **Junior World Science Scholars Workshop Presenter** | "Quantum Computing: Using Physics to Exponentially Increase Computing Power" | 2023
 - **Author Talks and [YouTube Channel](https://www.youtube.com/@cpgtv123)** | On topics like quantum mechanics, calculus, artificial intelligence, and more; to spark curiosity for math and science in kids and in everyone | 2019–2024
-- **Guest Organist** | Basilica of Saints Peter and Paul, Lewiston, Maine | 2023 and 2024 | [Recording](https://www.youtube.com/watch?v=BmG57uQmzj4)
+- **Guest Organist** | Basilica of Saints Peter and Paul, Lewiston, Maine | 2023–2025 | [Recording](https://www.youtube.com/watch?v=BmG57uQmzj4)
 - **Psalterium Institute of Maine Chamber Choir** | 2023–2025
 - **Basilica of Saints Peter and Paul Choir** | 2023–2025
-- **Musical Volunteer** | Brentwood Rehab Center | 2023–2024
+- **Musical Volunteer** | Brentwood Rehab Center | 2023–2025

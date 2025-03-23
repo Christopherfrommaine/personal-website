@@ -2,10 +2,12 @@
   "name": "personal-website",
   "version": "1.0.0",
   "scripts": {
-    "build": "npx tsc && ./localbuild.sh",
+    "build": "npx tsc",
+    "localbuild": "npm run build && ./localbuild.sh",
     "open": "xdg-open \"http://localhost:8080\"",
     "server": "npx live-server dist/",
     "serve": "npm run build && npx live-server dist/ --no-browser",
+    "localserve": "npm run localbuild && npx live-server dist/ --no-browser",
     "cloudflare-deploy": "cloudflared tunnel --url http://localhost:8080"
   },
   "keywords": [],
