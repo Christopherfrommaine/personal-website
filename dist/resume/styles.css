@@ -22,3 +22,11 @@
 a {
     text-decoration: underline;
 }
+
+/* Remove some unneeded parts of the generated markdown */
+#christopher-gilbert {
+    display: none;
+}
+h6 {
+    display: none;
+}

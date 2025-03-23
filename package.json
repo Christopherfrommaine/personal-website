@@ -2,7 +2,7 @@
   "name": "personal-website",
   "version": "1.0.0",
   "scripts": {
-    "build": "npx tsc && python3 dist/projects/personal-website/build.py",
+    "build": "npx tsc && ./localbuild.sh",
     "open": "xdg-open \"http://localhost:8080\"",
     "server": "npx live-server dist/",
     "serve": "npm run build && npx live-server dist/ --no-browser",

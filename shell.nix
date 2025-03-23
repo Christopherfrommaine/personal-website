@@ -5,6 +5,7 @@ in pkgs.mkShell {
 
     pkgs.nodejs_23
     pkgs.python3
+    pkgs.pandoc
 
   ];
 

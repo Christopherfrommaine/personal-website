@@ -3,6 +3,7 @@
         "gravsim",
         "IDENSITY",
         "invd",
-        "numpy"
+        "numpy",
+        "RREF"
     ]
 }
