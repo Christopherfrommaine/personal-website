@@ -8,12 +8,16 @@ canvas.height = window.innerHeight;
 // // Main Program
 // Physics Constants
 const G = 100;
-const DT = 0.01;
+let DT = 0.01;
 const DAMPING = 0.001;
 const STEPS = 20; // Steps per Frame Multiplier
 const IDENSITY = 0.05; // Pixels per unit of mass
 const M = 3; // Number of Attractors
-const N = 10000; // Number of Particles
+let N = 10000; // Number of Particles
+if (canvas.height < 500) {
+    N = 1000;
+    DT *= 0.75;
+}
 // Generate Particle List
 let particles = {
     x: new Float32Array(N),

@@ -11,7 +11,7 @@ colorlinks: true
 ###### [christopherfrommaine@gmail.com](mailto:christopherfrommaine@gmail.com)
 
 High school senior interested in physics, math, programming, and music. 
-Pursuing Quantum Information Science and Computational Physics at MIT 2029.
+Pursuing Quantum Information Science and Computational Physics at MIT class of 2029.
 
 ## Education
 
