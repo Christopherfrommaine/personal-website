@@ -21,3 +21,35 @@ canvas {
     flex-direction: row;
     align-items: center;
 }
+.row * {
+    width: 50%;
+    margin: 10px 0 10px 0;
+}
+.row video {
+    border: 1px solid #B2B2B2;
+    border-radius: 3px;
+}
+#gravsim-preview {
+    float: right;
+}
+#gravsim-description {
+    justify-items: center;
+    float: left;
+}
+#rustplot-preview {
+    float: left;
+}
+#rustplot-description {
+    justify-items: center;
+    float: right;
+}
+#website-preview {
+    float: right;
+}
+#website-description {
+    justify-items: center;
+    float: left;
+}
+#website-description * {
+    min-width: fit-content;
+}

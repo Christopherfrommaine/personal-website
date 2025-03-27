@@ -27,12 +27,23 @@
     
     <h1>Projects</h1>
     <p>I've been programming seriously since about 2019, mainly working on small projects for fun and to learn. Check out some of them in more detail:</p>
-    <div class="row">
-      <a href="/projects/gravitysim">Gravity Sim</a>
-      <iframe src="/projects/gravitysim/display/"></iframe>
+    <div class="projects-col">
+      <div class="row">
+        <div id="gravsim-description"><a href="/projects/gravitysim">Gravity Sim</a></div>
+        <iframe id="gravsim-preview" src="/projects/gravitysim/display/"></iframe>
+      </div>
+      <div class="row">
+        <div id="rustplot-description"><a href="/projects/cgrustplot">CG<wbr>Rustplot</a></div>
+        <video id="rusplot-preview" autoplay loop muted playsinline width="50%">
+          <source src="/assets/animatedfunctionplot1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="row">
+        <div id="website-description"><a href="/projects/personal-website">Personal Website</a></div>
+        <iframe id="website-preview" src="/projects/personal-website/webpage-source.txt"></iframe>
+      </div>
     </div>
-    <a href="/projects/cgrustplot">CGRustplot</a>
-    <a href="/projects/personal-website">Personal Website</a>
     <p>
       In rust, I've written mathematical function optimization algorithms, a SAT-solver based solution finder for code-20 cellular automata, and a widely-used ascii-art plotting library. In python, I've written many-body gravitational simulations, chess engines, a custom RREF algorithm, and more. In the Wolfram Language, I've written a quantum computing simulation and done mathematical research on functional iteration and roots.
     </p>
