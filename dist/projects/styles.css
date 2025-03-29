@@ -25,31 +25,24 @@ canvas {
     width: 50%;
     margin: 10px 0 10px 0;
 }
-.row video {
+.preview {
+    float: right;
+    height: 175px;
+
     border: 1px solid #B2B2B2;
     border-radius: 3px;
 }
-#gravsim-preview {
-    float: right;
+.description {
+    text-align: right;
+    padding-right: 50px;
 }
-#gravsim-description {
-    justify-items: center;
-    float: left;
+#video-container {
+    height: 175px;
 }
-#rustplot-preview {
-    float: left;
-}
-#rustplot-description {
-    justify-items: center;
-    float: right;
-}
-#website-preview {
-    float: right;
-}
-#website-description {
-    justify-items: center;
-    float: left;
-}
-#website-description * {
-    min-width: fit-content;
+#video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+    margin: 0;
 }

@@ -39,7 +39,7 @@ AP Statistics, AP Physics C Electricity and Magnetism, IB Latin IV in progress
 - **Samsung Solve for Tomorrow Challenge** | 1st in Maine | Treating water for PFAS chemicals | 2023
 - **Kotzschmar Memorial Trust Music Scholarship** | For Organ Performance | 2023
 - **Winter Serenade Competition** | 1st Place | 2024 | [Performance at Methuen Memorial Hall](https://youtu.be/tzBzztInZ4M?si=kwdWrIv7RK_k43tg)
-- **National Merit Winner** | 2025
+- **National Merit Scholarship Winner** | 2025
 - **Presidential Scholars Candidate** | 2025
 - **National History Day in Maine** | Year-long research projects for the National History Day Competition:
     - **[Leo Szilard and the Atomic Bomb](http://68999187.nhd.weebly.com/)** | 1st place website | 2019
