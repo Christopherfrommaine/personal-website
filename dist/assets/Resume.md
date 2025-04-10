@@ -6,20 +6,12 @@ numbersections: false
 pagestyle: empty
 colorlinks: true
 ---
-
 # Christopher Gilbert
-###### [christopherfrommaine@gmail.com](mailto:christopherfrommaine@gmail.com)
 
-High school senior interested in physics, math, programming, and music. 
+###### [christopherfrommaine@gmail.com](mailto:christopherfrommaine@gmail.com) | +1-207-409-6444 | Cumberland, ME
+
+Senior at Greely High School interested in physics, math, programming, and music. 
 Pursuing Quantum Information Science and Computational Physics at MIT class of 2029.
-
-## Education
-
-I am a senior at Greely High school (Class of 2025) who has taken college-level courses such as Calculus B, Calculus C, Linear Algebra, Discrete Math, and Ethics.
-
-AP classes include AP Physics C Mechanics: 5, AP Calculus BC: 5, AP Biology: 5, AP Language and Composition: 5.
-
-AP Statistics, AP Physics C Electricity and Magnetism, IB Latin IV in progress
 
 ## Experience
 
@@ -36,16 +28,17 @@ AP Statistics, AP Physics C Electricity and Magnetism, IB Latin IV in progress
 - **Nonfiction Authors Association Book Award** | Silver Medal | 2019
 - **Rise for the World** | Global Finalist | for Creating STEM Communication Videos | 2023
 - **XVII Golden Key International Piano Composition Competition** | ["For Lewiston"](https://youtu.be/bWQxTFo2z10?si=XZEPI6n8eHlIkbLX) | 2023
-- **Samsung Solve for Tomorrow Challenge** | 1st in Maine | Treating water for PFAS chemicals | 2023
-- **Kotzschmar Memorial Trust Music Scholarship** | For Organ Performance | 2023
-- **Winter Serenade Competition** | 1st Place | 2024 | [Performance at Methuen Memorial Hall](https://youtu.be/tzBzztInZ4M?si=kwdWrIv7RK_k43tg)
-- **National Merit Scholarship Winner** | 2025
-- **Presidential Scholars Candidate** | 2025
+- **Sempre Musick Winter Serenade Competition** | 1st Place | 2024 | [Organ Performance at Methuen Memorial Hall](https://youtu.be/tzBzztInZ4M?si=kwdWrIv7RK_k43tg)
 - **National History Day in Maine** | Year-long research projects for the National History Day Competition:
     - **[Leo Szilard and the Atomic Bomb](http://68999187.nhd.weebly.com/)** | 1st place website | 2019
     - **[George Lemaitre and the Big Bang Theory](https://20-72146579.nhdwebcentral.org/)** | 1st place website | 2020
     - **[Claude Shannon and Information Theory](https://21-07081439.nhdwebcentral.org/)** | 2nd place website | 2021
     - **[Bohr, Einstein, and the Debate of Modern Physics](https://drive.google.com/file/d/1gINOfSicnW34-_Qmne_pO_dFxOiUMyEU/view)** | 1st place paper | 2022
+    
+- **Samsung Solve for Tomorrow Challenge** | 1st in Maine, winning $14,000 for GHS | Treating water for PFAS chemicals | 2023
+- **Kotzschmar Memorial Trust Music Scholarship** | For Organ Performance | 2023
+- **National Merit Scholarship Winner** | 2025
+- **Presidential Scholars Candidate** | 2025
 - **National Latin Exam** | Gold Medal | 2024
 - **All Eastern Honor Choir** | 2022
 - **Maine Celebration of Young Musicians for Organ Performance** | 2019
