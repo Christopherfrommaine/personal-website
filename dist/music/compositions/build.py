@@ -2,7 +2,6 @@
 import os
 
 files = os.listdir("dist/assets/compositions/")
-files = [f.split('.')[0] + '.' + f.split('.')[1] for f in files]
 
 if "" in files:
     files.remove("")
@@ -74,8 +73,8 @@ def generate_html(s):
         (".mp4", "Video"),
         (".mov", "Video"),
         (".recording", "Recording"),
-        (".mp3", "Audio"),
         (".pdf", "Score"),
+        (".mp3", "Audio"),
         (".xml", "XML"),
         (".mscz", "MuseScore")
     ]
