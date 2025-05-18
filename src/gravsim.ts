@@ -16,7 +16,7 @@ const STEPS = 20;  // Steps per Frame Multiplier
 const IDENSITY = 0.05;  // Pixels per unit of mass
 
 const M = 3;  // Number of Attractors
-const N = Math.round(257.395 + 0.0127925 * (canvas.width * canvas.height));  // Number of Particles
+const N = Math.round(257.395 + 0.0127925 * (canvas.width * canvas.height));  // Number of Particles; equation from interpolating two values which looked decent
 
 // Generate Particle List
 let particles = {
@@ -117,11 +117,12 @@ function updateParticles() {
             let dx = a.x - px;
             let dy = a.y - py;
 
-            let invd = 1 / Math.sqrt(dx * dx + dy * dy);
+            let dsq = dx * dx + dy * dy;
+            let invd = 1 / Math.sqrt(dsq);
 
             // This check would make it much more accurate physically, but it looks better without:
-            // Also adds a conditional, which is expensive.
-            // if (dsq > (IDENSITY * a.m) ** 2)
+            // Also adds a conditional in a hot loop, which is expensive.
+            // if (dsq > (IDENSITY * a.m) ** 2) {
             
             let forceMag = a.gm * invd * invd * invd;  // Also includes vector normalization
             xForce += forceMag * dx;
@@ -148,7 +149,7 @@ const attractorColor = getComputedStyle(document.documentElement)
     .getPropertyValue("--color-gravsim-attractor").trim();
 
 // Precompute circle approximation, arc() can be expensive
-const vertices = 8;
+const vertices = 6;
 const radius = 2;
 let polygon: number[][] = [];
 for (let i = 0; i < vertices; i++) {

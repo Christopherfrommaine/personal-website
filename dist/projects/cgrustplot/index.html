@@ -63,10 +63,8 @@
       use cgrustplot::plots::function_plot::function_plot;
 
       fn main() {
-        // a cool-looking function
         let f = |x: f64| -x + 2. * x * x + x * x * x;
 
-        // plot it, save it
         function_plot(&f)
             .set_size((200, 30))
             .as_image()

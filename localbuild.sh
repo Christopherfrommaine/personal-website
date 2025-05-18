@@ -1,5 +1,13 @@
 # A set of things locally which should be run every once in a while to keep the website up to date.
 
+# Copy compositions to assets
+cp -r ~/Documents/Scores/Finished dist/assets/
+rm -r dist/assets/compositions
+mv dist/assets/Finished dist/assets/compositions
+
+# Process Compositions
+python3 dist/music/compositions/build.py
+
 # Combine files into text for display
 python3 dist/projects/personal-website/build.py
 
