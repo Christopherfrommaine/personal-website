@@ -6,46 +6,53 @@ numbersections: false
 pagestyle: empty
 colorlinks: true
 ---
-# Christopher Gilbert
 
-###### [christopherfrommaine@gmail.com](mailto:christopherfrommaine@gmail.com) | [Website](https://christopherfrommaine.netlify.app) | +1-207-409-6444 | Cumberland, ME
+\begin{center}
+\section{Christopher Gilbert}
 
-Senior at Greely High School interested in physics, math, programming, and music. 
-Pursuing Quantum Information Science and Computational Physics at MIT class of 2029.
+\href{mailto:christopherfrommaine@gmail.com}{christopherfrommaine@gmail.com}
+|
+\href{https://christopherfrommaine.netlify.app}{christopherfrommaine.netlify.app}
+|
++1-207-409-6444
+\end{center}
 
-## Experience
+*MIT undergraduate pursuing Quantum Information Science and Computational Physics*
 
-- **Author** | _Quantum Mechanics for Kids: a Humorous, Easy-to-Read, Math-Free Book on a Very Perplexing Subject_ | 2019 | [Goodreads](https://www.goodreads.com/book/show/52255113-quantum-mechanics-for-kids)
-- **Wolfram Summer Research Program** | _Novel Minimal Universal Classical and Quantum Gates_ | 2024 | [Project](https://community.wolfram.com/groups/-/m/t/3214252) | [Paper](https://christopherfrommaine.netlify.app/assets/UniversalQuantumGates.pdf)
+
+### Experience
+
+- **Programming Adventures** | Weekly collaborative think-tank sessions with Stephen Wolfram, assisting in solving problems in topics such as neural networks and recursive functions.
 - **Wolfram Emerging Leaders Program** | Year-long intense mathematical research on a student team studying functional roots | 2024–2025 | [Project](https://community.wolfram.com/groups/-/m/t/3379973)
-- **Programming Adventures** | Weekly collaborative think-tank sessions, assisting in solving problems in topics such as neural networks and recursive functions.
+- **Wolfram Summer Research Program** | _Novel Minimal Universal Classical and Quantum Gates_ | 2024 | [Project](https://community.wolfram.com/groups/-/m/t/3214252) | [Paper](https://christopherfrommaine.netlify.app/assets/UniversalQuantumGates.pdf)
 - **World Science Scholar** | Completed two years of challenging coursework in topics such as general relativity, computational analysis, and evolutionary medicine | 2021–2024
 - **MIT Beaverworks Summer Institute** | Quantum Software | 2023 | [Presentation](https://youtu.be/ZznIlmkSVj4)
 - **University of Waterloo Quantum School for Young Students** | 2021
+- **Author** | _Quantum Mechanics for Kids: a Humorous, Easy-to-Read, Math-Free Book on a Very Perplexing Subject_ | 2019 | [Goodreads](https://www.goodreads.com/book/show/52255113-quantum-mechanics-for-kids)
 
-## Awards and Honors
+### Awards and Honors
 
-- **Nonfiction Authors Association Book Award** | Silver Medal | 2019
+- **Davidson Fellows Scholarship** | For _Novel Minimal Universal Classical and Quantum Gates_ | 2025
 - **Rise for the World** | Global Finalist | for Creating STEM Communication Videos | 2023
+- **Samsung Solve for Tomorrow Challenge** | 1st in Maine, winning $14,000 for Greely High School | Treating water for PFAS chemicals | 2023
+- **National Merit Scholarship Winner** | 2025
+- **Presidential Scholars Candidate** | 2025
 - **XVII Golden Key International Piano Composition Competition** | ["For Lewiston"](https://youtu.be/bWQxTFo2z10?si=XZEPI6n8eHlIkbLX) | 2023
 - **Sempre Musick Winter Serenade Competition** | 1st Place | 2024 | [Organ Performance at Methuen Memorial Hall](https://youtu.be/tzBzztInZ4M?si=kwdWrIv7RK_k43tg)
+- **Kotzschmar Memorial Trust Music Scholarship** | For Organ Performance | 2023
 - **National History Day in Maine** | Year-long research projects for the National History Day Competition:
     - **[Leo Szilard and the Atomic Bomb](http://68999187.nhd.weebly.com/)** | 1st place website | 2019
     - **[George Lemaitre and the Big Bang Theory](https://20-72146579.nhdwebcentral.org/)** | 1st place website | 2020
     - **[Claude Shannon and Information Theory](https://21-07081439.nhdwebcentral.org/)** | 2nd place website | 2021
     - **[Bohr, Einstein, and the Debate of Modern Physics](https://drive.google.com/file/d/1gINOfSicnW34-_Qmne_pO_dFxOiUMyEU/view)** | 1st place paper | 2022
-    
-- **Samsung Solve for Tomorrow Challenge** | 1st in Maine, winning $14,000 for GHS | Treating water for PFAS chemicals | 2023
-- **Kotzschmar Memorial Trust Music Scholarship** | For Organ Performance | 2023
-- **National Merit Scholarship Winner** | 2025
-- **Presidential Scholars Candidate** | 2025
 - **National Latin Exam** | Gold Medal | 2024
 - **All Eastern Honor Choir** | 2022
+- **Nonfiction Authors Association Book Award** | Silver Medal | 2019
 - **Maine Celebration of Young Musicians for Organ Performance** | 2019
 - **Children's Choir PortOpera's production of _Carmen_** | 2018
 - **3M Discovery Education Young Scientists Lab Competition** | 1st in Maine | 2018
 
-## Service and Extracurriculars
+### Service and Extracurriculars
 
 - **Mentor** | Junior World Science Scholars | 2023–2024
 - **Junior World Science Scholars Workshop Presenter** | "Quantum Computing: Using Physics to Exponentially Increase Computing Power" | 2023
