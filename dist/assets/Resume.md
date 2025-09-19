@@ -17,7 +17,7 @@ colorlinks: true
 +1-207-409-6444
 \end{center}
 
-*MIT undergraduate pursuing Quantum Information Science and Computational Physics*
+\ \ *MIT undergraduate pursuing Quantum Information Science and Computational Physics*
 
 
 ### Experience
