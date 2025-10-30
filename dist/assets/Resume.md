@@ -17,7 +17,7 @@ colorlinks: true
 +1-207-409-6444
 \end{center}
 
-\ \ *MIT undergraduate pursuing Quantum Information Science and Computational Physics*
+\ *MIT undergraduate pursuing Quantum Information Science and Computational Physics*
 
 
 ### Experience
@@ -33,10 +33,10 @@ colorlinks: true
 ### Awards and Honors
 
 - **Davidson Fellows Scholarship** | For _Novel Minimal Universal Classical and Quantum Gates_ | 2025
+- **Presidential Scholars Winner** | 2025
+- **National Merit Scholarship Winner** | 2025
 - **Rise for the World** | Global Finalist | for Creating STEM Communication Videos | 2023
 - **Samsung Solve for Tomorrow Challenge** | 1st in Maine, winning $14,000 for Greely High School | Treating water for PFAS chemicals | 2023
-- **National Merit Scholarship Winner** | 2025
-- **Presidential Scholars Candidate** | 2025
 - **XVII Golden Key International Piano Composition Competition** | ["For Lewiston"](https://youtu.be/bWQxTFo2z10?si=XZEPI6n8eHlIkbLX) | 2023
 - **Sempre Musick Winter Serenade Competition** | 1st Place | 2024 | [Organ Performance at Methuen Memorial Hall](https://youtu.be/tzBzztInZ4M?si=kwdWrIv7RK_k43tg)
 - **Kotzschmar Memorial Trust Music Scholarship** | For Organ Performance | 2023
@@ -61,3 +61,4 @@ colorlinks: true
 - **Psalterium Institute of Maine Chamber Choir** | 2023–2025
 - **Basilica of Saints Peter and Paul Choir** | 2023–2025
 - **Musical Volunteer** | Brentwood Rehab Center | 2023–2025
+- **Combat Robotics Club** | CAD, manufacturing, and electronics in small teams | 2025
