@@ -5,3 +5,5 @@ node_modules
 /dist/assets/gravsim attractors 1080p 200dt.mp4
 
 /dist/testing
+
+dist/assets/compositions/.mscbackup
