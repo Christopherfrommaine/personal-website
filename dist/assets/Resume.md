@@ -17,7 +17,7 @@ colorlinks: true
 +1-207-409-6444
 \end{center}
 
-\ *MIT undergraduate pursuing Quantum Information Science and Computational Physics*
+\ *MIT undergraduate pursuing Quantum Information Science and Computer Engineering*
 
 
 ### Experience
@@ -29,6 +29,12 @@ colorlinks: true
 - **MIT Beaverworks Summer Institute** | Quantum Software | 2023 | [Presentation](https://youtu.be/ZznIlmkSVj4)
 - **University of Waterloo Quantum School for Young Students** | 2021
 - **Author** | _Quantum Mechanics for Kids: a Humorous, Easy-to-Read, Math-Free Book on a Very Perplexing Subject_ | 2019 | [Goodreads](https://www.goodreads.com/book/show/52255113-quantum-mechanics-for-kids)
+
+### Skills
+
+- Classwork: Multi-variable Calculus, Differential Equations, Physics Mechanics and Electromagnetism, C and Assembly Programming, Discrete Mathematics, Solid-State Chemistry, Linear Algebra
+- Fluent with Python, Rust, Mathematica, and C, and have completed numerous projects in each.
+- Familiarity with CAD for 3D printing, sheet metal, and PCB design. 
 
 ### Awards and Honors
 
