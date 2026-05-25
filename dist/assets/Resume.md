@@ -32,9 +32,9 @@ colorlinks: true
 
 ### Skills
 
-- Classwork: Multi-variable Calculus, Differential Equations, Physics Mechanics and Electromagnetism, C and Assembly Programming, Discrete Mathematics, Solid-State Chemistry, Linear Algebra
-- Fluent with Python, Rust, Mathematica, and C, and have completed numerous projects in each.
-- Familiarity with CAD for 3D printing, sheet metal, and PCB design. 
+- **Classwork** | Multi-variable Calculus, Differential Equations, Physics Mechanics and Electromagnetism, C and Assembly Programming, Discrete Mathematics, Solid-State Chemistry, Linear Algebra
+- **Programming** | Fluent with Python, Rust, Mathematica, and C, and have completed numerous projects in each.
+- **Construction** | Familiarity with CAD for 3D printing, sheet metal, and PCB design. Familiar with basic fabrication techniques and tools.
 
 ### Awards and Honors
 
